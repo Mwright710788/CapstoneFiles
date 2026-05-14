@@ -1,0 +1,19 @@
+# Data files
+data/*.csv
+data/*.xlsx
+data/*.json
+*.shp
+*.dbf
+*.shx
+*.prj
+*.gdb
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# OS
+.DS_Store
+Thumbs.db
