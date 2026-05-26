@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0">
   <diagram name="Page-1" id="vp5ZB3LMx4H3iDpze45K">
-    <mxGraphModel dx="1856" dy="1021" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2142" dy="1178" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -324,7 +324,7 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-165" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="Data Preprocessing Python Script" vertex="1">
           <mxGeometry height="40" width="410" x="290" y="90" as="geometry" />
         </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-170" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9fPjuyDh25-OeGfxm3OJ-169">
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-171" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9fPjuyDh25-OeGfxm3OJ-169">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-166" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import cleaned dataset into ArcGIS&lt;/div&gt;&lt;div&gt;using table to point tool&lt;/div&gt;" vertex="1">
@@ -332,6 +332,28 @@
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-169" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import OKcounties dataset into ArcGIS&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="1050" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-172" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="UCO Herbarium&lt;div&gt;file geodatabase&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="1040" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-173" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="330" />
+            </Array>
+            <mxPoint x="1100" y="330" as="sourcePoint" />
+            <mxPoint x="1100" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-174" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="170" />
+              <mxPoint x="1190" y="350" />
+              <mxPoint x="1120" y="350" />
+            </Array>
+            <mxPoint x="1120" y="390" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
