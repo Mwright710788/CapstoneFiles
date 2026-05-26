@@ -324,8 +324,14 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-165" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="Data Preprocessing Python Script" vertex="1">
           <mxGeometry height="40" width="410" x="290" y="90" as="geometry" />
         </mxCell>
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-170" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9fPjuyDh25-OeGfxm3OJ-169">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-166" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import cleaned dataset into ArcGIS&lt;/div&gt;&lt;div&gt;using table to point tool&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="1050" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-169" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import OKcounties dataset into ArcGIS&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1050" y="270" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
