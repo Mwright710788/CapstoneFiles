@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0">
   <diagram name="Page-1" id="vp5ZB3LMx4H3iDpze45K">
-    <mxGraphModel dx="2142" dy="1178" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2828" dy="1554" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -244,21 +244,21 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
           <mxGeometry height="30" width="60" x="840" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-168" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.008;entryY=0.671;entryDx=0;entryDy=0;startSize=8;endSize=8;entryPerimeter=0;" target="9fPjuyDh25-OeGfxm3OJ-166">
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-168" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startSize=8;endSize=8;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1010" y="950" />
               <mxPoint x="1010" y="180" />
-              <mxPoint x="1100" y="180" />
+              <mxPoint x="1040" y="180" />
             </Array>
-            <mxPoint x="1090" y="170" as="targetPoint" />
+            <mxPoint x="1050" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-12" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="Log file of specimens&lt;div&gt;omitted from public-facing deliverables.&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="120" x="790" y="910" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-33" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="end process" vertex="1">
-          <mxGeometry height="80" width="120" x="1540" y="980" as="geometry" />
+          <mxGeometry height="80" width="120" x="1550" y="970" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-46" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-44">
           <mxGeometry relative="1" as="geometry" />
@@ -334,7 +334,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-166" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import cleaned dataset into ArcGIS&lt;/div&gt;&lt;div&gt;using table to point tool&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="1100" y="140" as="geometry" />
+          <mxGeometry height="60" width="120" x="1050" y="140" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-180" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endSize=8;startSize=8;entryPerimeter=0;" target="9fPjuyDh25-OeGfxm3OJ-172">
           <mxGeometry relative="1" as="geometry">
@@ -342,29 +342,93 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-169" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;import OKcounties dataset into ArcGIS&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="1100" y="270" as="geometry" />
+          <mxGeometry height="60" width="120" x="1050" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-2" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-172" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-186">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-172" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="UCO Herbarium&lt;div&gt;file geodatabase&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="140" x="1410" y="190" as="geometry" />
+          <mxGeometry height="80" width="140" x="1290" y="190" as="geometry" />
         </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-183" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-181">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1450" y="260" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-184" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-182">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1450" y="260" as="sourcePoint" />
-          </mxGeometry>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-13" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-181" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="8B9BxLksavhCE5MKoBQG-5">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-181" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;project spatial data into Alber Equal Area Conic projection&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="1280" y="360" as="geometry" />
+          <mxGeometry height="60" width="120" x="1200" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-14" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-182" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-6">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-182" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;project spatial data into Web Mercator projection&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="1480" y="360" as="geometry" />
+          <mxGeometry height="60" width="120" x="1400" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-3" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-186" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-181">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-4" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-186" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-182">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-186" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;spatial join between CSUoccurrences and&lt;/div&gt;&lt;div&gt;OKcountie&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="1430" y="520" as="geometry" />
+          <mxGeometry height="60" width="120" x="1300" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=35;fontStyle=1" value="UCO Herbarium Collection - Geospatial Analysis Flowchart" vertex="1">
+          <mxGeometry height="70" width="1060" x="340" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-15" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;create choropleth map of sampling distribution&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1200" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-16" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;publish data to ArcGIS Online hosted feature classes&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1400" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-17" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;create dot density map of geographically precise specimens&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1200" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-18" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;create web map&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1400" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-19" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1260" y="860" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="calculate statistics and generate charts / graphs" vertex="1">
+          <mxGeometry height="60" width="120" x="1200" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-20" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;create ArcGIS Web Experience with web map and interactive data&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1400" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-25" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;create ArcGIS Story Map with imbedded interactive web map&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1400" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-23" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="8B9BxLksavhCE5MKoBQG-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-21" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="compose infographic panel" vertex="1">
+          <mxGeometry height="80" width="120" x="1200" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-24" edge="1" parent="1" source="8B9BxLksavhCE5MKoBQG-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startSize=8;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8B9BxLksavhCE5MKoBQG-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="transfer ArcGIS project to UCO herbarium" vertex="1">
+          <mxGeometry height="60" width="120" x="1200" y="980" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
