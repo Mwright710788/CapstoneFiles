@@ -26,3 +26,20 @@ See `docs/wrightCapstoneFlowchart.drawio` for the full ETL architecture diagram.
 
 Active development — capstone project for MS in GIS Administration, 
 University of West Florida.
+
+## Data and related Metadata
+
+CSUoccurrences.csv: UCO Herbarium Dataset
+Source: Due to ownership / privacy concerns, this dataset has been redacted from the repository; available to authorized project collaborators upon request
+Year: 2026
+Processing: all processing completed via Python ETL Pipeline Script
+
+okCounties.geojson: all 77 Oklahoma counties in geoJSON format
+Source: https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2025&layergroup=Counties+%28and+equivalent%29
+Year: 2025
+Processing: this dataset was converted from shapefile format to geojson in ArcGIS pro
+
+okTracking.csv: listed plant species and their respective global / state threat rankings
+Source: https://obis.ou.edu/tracking-list
+Year: 2026
+Processing: no preprocessing applied
