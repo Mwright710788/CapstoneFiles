@@ -2,13 +2,19 @@
 import numpy as np
 import pandas as pd
 import geopandas as gpd
+import os
+
+##set current working directory to location of Python script file
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 ##location of CSUoccurrences csv file
 csuFile = "./data/CSUoccurrences.csv"
 csuData = pd.read_csv(csuFile, encoding = 'latin-1',
                       low_memory = False,
+                      na_values = [""],
                       dtype = {'identificationQualifier': str,
                                'references': str})
+csuData = csuData.reset_index(drop = True)
 
 ##location of okCounties csv file
 countiesFile = "./data/okCounties.geojson"
@@ -45,8 +51,8 @@ print("\n")
 csuGeoData = gpd.GeoDataFrame(
     csuData,
     geometry = gpd.points_from_xy(csuData.decimalLongitude,
-                                  csuData.decimalLatitude,
-    crs = "EPSG:4326")
+                                  csuData.decimalLatitude),
+    crs = "EPSG:4326"
 )
 
 ##perform spatial join between csuOccurrences and OKcounties to
@@ -70,6 +76,8 @@ print(f"Total points analyzed: {len(joinedPointsWithCounty)}")
 print(f"Points listed in wrong county: {len(misMatched)}")
 print(f"Points listed outside of Oklahoma: {len(notInOK)}")
 print("\n")
+print(notInOK[['genus', 'specificEpithet', 'county', 'decimalLatitude', 'decimalLongitude']].head(10))
+print(csuData[csuData['decimalLatitude'].isna()].shape)
 
 ##export mismatched entries
 exportMismatches = misMatched[["id", "county", "stateProvince", "NAME",
@@ -88,16 +96,25 @@ print(f"Exporting specimen entries outside of Oklahoma to: '{notInOkFile}...'")
 print("\n")
 print(joinedPointsWithCounty["countyMatch"].value_counts(dropna = False))
 
+##extract notInOk entries from CSUoccurrences and proceed to tracking list join
+csuData = csuData[~csuData["id"].isin(notInOK["id"])]
 
-
-
-
-
-
-
-
-
-
+csuData["genusSpecies"] = (
+    csuData["genus"].str.strip().str.capitalize() + " " +
+    csuData["specificEpithet"].str.strip().str.lower() +
+    np.where(
+        csuData["verbatimTaxonRank"].notna(),
+        " " + csuData["verbatimTaxonRank"].str.replace("subsp.", "ssp.") + " " +
+        csuData["infraspecificEpithet"].str.strip(),
+        ""
+    )
+)
+print("\n")
+print(trackData[trackData["Scientific Name"].isin(csuData["genusSpecies"])].shape)
+print(csuData[csuData["genusSpecies"].isin(trackData["Scientific Name"])]["genusSpecies"].count())
+print("\n")
+print(csuData[csuData['decimalLatitude'].round(6) == 35.551495][['county', 'decimalLatitude', 'decimalLongitude']].head(5))
+print("\n")
 
 
 
