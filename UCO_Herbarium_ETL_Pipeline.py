@@ -28,9 +28,24 @@ trackData = pd.read_csv(trackFile)
 print(csuData[['decimalLatitude',
                'decimalLongitude']].isna().sum())
 print("\n")
+
+nullCoords = csuData[csuData['decimalLatitude'].isna()]
+print(nullCoords["county"].unique())
+
+
 ##TO-DO: centroid assignment for records with null coordinates
 ##requires spatial join with countyData geoJSON
 ##no null coordinates in current dataset - will implement if needed
+countyLookup = {}
+for index, row in countyData.iterrows():
+    countyName = row["NAME"].strip().title()
+    countyCentroid = row["geometry"].centroid
+    countyLookup[countyName] = (countyCentroid.y, countyCentroid.x)
+print(countyLookup["Oklahoma"])
+
+
+
+
 
 ##create geographicPrecision field and populate based on conditions
 conditions = [
