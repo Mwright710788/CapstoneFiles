@@ -34,6 +34,7 @@ trackData = pd.read_csv(trackFile)
 ##create logs directory if it doesn't exist
 os.makedirs("./logs/", exist_ok = True)
 
+
 ###################################################################################################
 ####
 ####Define sensitive species list for redaction in final dataset;
@@ -102,6 +103,18 @@ csuData.loc[lonMask, "calcLon"] = csuData.loc[lonMask, "cleanName"].map(lookupLo
 ##test print statement to verify that records with null coordinates have been filled
 print("Number of null values in calcLat and calcLon after centroid calculation:")
 print(csuData[["calcLat", "calcLon"]].isna().sum())
+print("\n")
+
+stillNull = csuData["calcLat"].isna()
+csuData.loc[stillNull, "georef_notes"] = "UNGEOREFERENCEABLE - no coordinates, no county"
+unreferencedSpecimensFile = "./logs/ungeoreferenceableSpecimens.csv"
+print(f"Records flagged as ungeoreferenceable: {stillNull.sum()}")
+print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
+print("\n")
+print(f"Exporting ungeoreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
+csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
+print(f"Dropping unreferenceable specimens from CSUoccurrences.csv...")
+csuData = csuData[~stillNull].reset_index(drop=True)
 print("\n")
 
 
