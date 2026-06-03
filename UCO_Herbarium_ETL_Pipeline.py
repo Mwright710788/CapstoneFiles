@@ -65,11 +65,13 @@ excludedFamilies = [
 ####
 ###################################################################################################
 
+##initial print statement
+print("Beginning UCO Herbarium ETL Pipeline Script")
+print("\n")
+
 ##print statement informing user that centroid calculation is taking place on entries
 ##with null coordinates and that results will be printed to console
-print("\n")
 print("Calculating county centroids for records with null coordinate values...")
-print("\n")
 
 ##normalize county names in both datasets to ensure they match
 csuData["cleanName"] = csuData["county"].str.strip().str.title()
@@ -109,6 +111,11 @@ print("\n")
 ####
 ###################################################################################################
 
+##block 2 initiation print statement
+print("Creating geographicPrecision field and populating based on three values:")
+print("    Precise, County Centroid, Assigned Centroid")
+print("\n")
+
 ##create geographicPrecision field and populate based on conditions
 conditions = [
     (csuData['georeferenceVerificationStatus'] == True),
@@ -116,19 +123,37 @@ conditions = [
     (csuData['georeferenceVerificationStatus'].isna())
 ]
 
-choices = ['True', 'False', 'Assigned']
+choices = ["PRECISE", "COUNTY CENTROID", "ASSIGNED CENTROID"]
 csuData['geographicPrecision'] = np.select(conditions,
                                            choices,
                                            default = "Unknown")
 
-##print test statement to sum number of records in each category of geographicPrecision
-print("Number of records in each category of geographicPrecision:")
+preciseRecords = len(csuData[(csuData['geographicPrecision']) == "PRECISE"])
+countyCentroidRecords = len(csuData[(csuData['geographicPrecision']) == "COUNTY CENTROID"])
+assignedCentroidRecords = len(csuData[(csuData['geographicPrecision']) == "ASSIGNED CENTROID"])
+unknownRecords = len(csuData[(csuData['geographicPrecision']) == "Unknown"])
+totalRecords = len(csuData)
+
+##print statements to sum number of records in each category of geographicPrecision
 print("""NOTE: 'Assigned' indicates records where county centroid was calculated
       and assigned due to no value given in the georeferenceVerificationStatus field; 
       coordinate accuracy could not be verified for these records.""")
 print("\n")
-print(csuData['geographicPrecision'].value_counts())
+print(f"Total number of specimen records: {totalRecords}")
+print(f"Total number of geographically precise records: {preciseRecords}")
+print(f"Total number of records with county level precision: {countyCentroidRecords}")
+print(f"Total number of records with calculated county centroid: {assignedCentroidRecords}")
 print("\n")
+print("Percentages of each category:")
+print(f"     Geographically precise records: {round(preciseRecords/totalRecords * 100,2)}%")
+print(f"     Records with county level precision: {round(countyCentroidRecords/totalRecords * 100,2)}%")
+print(f"     Records with calculated county centroid: {round(assignedCentroidRecords/totalRecords * 100,2)}%")
+print("\n")
+
+##unknown condition: flags a warning if any records exist outside of the three conditions
+if unknownRecords > 0:
+    print(f"Warning: {unknownRecords} records fell into unknown category - review geographicPrecision values")
+    print("\n")
 
 
 ###################################################################################################
@@ -164,7 +189,6 @@ misMatched = joinedPointsWithCounty[(~joinedPointsWithCounty["countyMatch"]) &
 
 ##print statements to summarize the results of the spatial join and accuracy check
 print("Summary of spatial join and geographic accuracy check:")
-print("\n")
 print(f"Total points analyzed: {len(joinedPointsWithCounty)}")
 print(f"Points listed in wrong county: {len(misMatched)}")
 print(f"Points listed outside of Oklahoma: {len(notInOK)}")
