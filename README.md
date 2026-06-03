@@ -5,20 +5,20 @@
 **Client:** Dr. Messick, University of Central Oklahoma Herbarium
 
 
-# ##################################################################################################################
-# ##################################################################################################################
-#
-# NOTE:
-# 
-# The UCO herbarium specimen occurrence data (`CSUoccurrences.csv`) 
-# is not included in this repository. This dataset is the property of the University 
-# of Central Oklahoma Herbarium and must be obtained directly from the 
-# [TORCH Portal](https://portal.torcherbaria.org/) or by contacting Dr. Messick 
-# at the UCO Department of Biology. All other reference data files required to run 
-# the pipeline are included in the `data/` folder.
-#
-# ##################################################################################################################
-# ##################################################################################################################
+> ##################################################################################################################
+> ##################################################################################################################
+>
+> NOTE:
+> 
+> The UCO herbarium specimen occurrence data (`CSUoccurrences.csv`) 
+> is not included in this repository. This dataset is the property of the University 
+> of Central Oklahoma Herbarium and must be obtained directly from the 
+> [TORCH Portal](https://portal.torcherbaria.org/) or by contacting Dr. Messick 
+> at the UCO Department of Biology. All other reference data files required to run 
+> the pipeline are included in the `data/` folder.
+>
+> ##################################################################################################################
+> ##################################################################################################################
 
 ---
 
