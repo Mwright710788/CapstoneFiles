@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0">
   <diagram name="Page-1" id="vp5ZB3LMx4H3iDpze45K">
-    <mxGraphModel dx="3535" dy="1943" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2320" dy="1277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,17 +19,17 @@
         <mxCell id="mv5gH8MdkmgmsuV4fE6p-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="begin process" vertex="1">
           <mxGeometry height="80" width="120" x="70" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="mv5gH8MdkmgmsuV4fE6p-7" edge="1" parent="1" source="mv5gH8MdkmgmsuV4fE6p-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="mv5gH8MdkmgmsuV4fE6p-5">
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-3" edge="1" parent="1" source="mv5gH8MdkmgmsuV4fE6p-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="PoqB0VKsO3DA9JWfZ92f-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="mv5gH8MdkmgmsuV4fE6p-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import pandas" vertex="1">
-          <mxGeometry height="60" width="120" x="70" y="270" as="geometry" />
+        <mxCell id="mv5gH8MdkmgmsuV4fE6p-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import numpy" vertex="1">
+          <mxGeometry height="30" width="120" x="70" y="185" as="geometry" />
         </mxCell>
         <mxCell id="mv5gH8MdkmgmsuV4fE6p-8" edge="1" parent="1" source="mv5gH8MdkmgmsuV4fE6p-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="mv5gH8MdkmgmsuV4fE6p-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="mv5gH8MdkmgmsuV4fE6p-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import geoPandas" vertex="1">
-          <mxGeometry height="60" width="120" x="70" y="370" as="geometry" />
+        <mxCell id="mv5gH8MdkmgmsuV4fE6p-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import os" vertex="1">
+          <mxGeometry height="30" width="120" x="70" y="395" as="geometry" />
         </mxCell>
         <mxCell id="VkkUkMQ_HwLYZq9jCv0C-9" edge="1" parent="1" source="mv5gH8MdkmgmsuV4fE6p-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="VkkUkMQ_HwLYZq9jCv0C-1">
           <mxGeometry relative="1" as="geometry" />
@@ -55,7 +55,7 @@
         <mxCell id="T4ZiRt8O989ueM4nzAIV-13" edge="1" parent="1" source="f2iZ71QQHSd5SJTenB2_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="T4ZiRt8O989ueM4nzAIV-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f2iZ71QQHSd5SJTenB2_-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;True&#39;&lt;/div&gt;" vertex="1">
+        <mxCell id="f2iZ71QQHSd5SJTenB2_-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;PRECISE&#39;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="310" y="290" as="geometry" />
         </mxCell>
         <mxCell id="y3JXd27-5LZWWhO44PuJ-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
@@ -108,7 +108,7 @@
         <mxCell id="T4ZiRt8O989ueM4nzAIV-16" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="T4ZiRt8O989ueM4nzAIV-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T4ZiRt8O989ueM4nzAIV-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;False&#39;&lt;/div&gt;" vertex="1">
+        <mxCell id="T4ZiRt8O989ueM4nzAIV-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;COUNTY CENTROID&#39;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="310" y="630" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
@@ -132,7 +132,7 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-63" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-59">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T4ZiRt8O989ueM4nzAIV-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="copy calculated&lt;div&gt;lat / long &lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;values to&lt;/span&gt;&lt;div&gt;&#39;GeographicCoords&#39;&lt;/div&gt;&lt;div&gt;field&lt;/div&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="T4ZiRt8O989ueM4nzAIV-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="copy calculated&lt;div&gt;lat / long &lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;values to&lt;/span&gt;&lt;div&gt;&#39;calcLat&#39; &amp;amp; &#39;calcLon&#39;&lt;/div&gt;&lt;div&gt;fields&lt;/div&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="550" y="265" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-22" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="T4ZiRt8O989ueM4nzAIV-32">
@@ -147,8 +147,8 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-58" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.003;entryY=0.345;entryDx=0;entryDy=0;entryPerimeter=0;startSize=8;endSize=8;" target="T4ZiRt8O989ueM4nzAIV-37">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="710" y="758" />
-              <mxPoint x="710" y="180" />
+              <mxPoint x="730" y="757" />
+              <mxPoint x="730" y="180" />
               <mxPoint x="790" y="180" />
             </Array>
             <mxPoint x="790" y="140" as="targetPoint" />
@@ -185,7 +185,7 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-153" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="T4ZiRt8O989ueM4nzAIV-38">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T4ZiRt8O989ueM4nzAIV-37" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="create&lt;div&gt;&#39;formattedSpecies&#39;&lt;/div&gt;&lt;div&gt;field&lt;/div&gt;" vertex="1">
+        <mxCell id="T4ZiRt8O989ueM4nzAIV-37" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="create&lt;div&gt;&#39;genusSpecies&#39;&lt;/div&gt;&lt;div&gt;field&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="790" y="160" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-56" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-1">
@@ -276,7 +276,7 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-43" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="records w/&lt;div&gt;&#39;Null&#39;&lt;/div&gt;&lt;div&gt;georeference&lt;/div&gt;&lt;div&gt;value?&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="80" x="330" y="830" as="geometry" />
         </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-44" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;Assigned&#39;&lt;/div&gt;" vertex="1">
+        <mxCell id="9fPjuyDh25-OeGfxm3OJ-44" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;ASSIGNED CENTROID&#39;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="310" y="960" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
@@ -287,6 +287,14 @@
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-155" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="9fPjuyDh25-OeGfxm3OJ-154">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-6" edge="1" parent="1" source="9fPjuyDh25-OeGfxm3OJ-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endSize=8;" target="T4ZiRt8O989ueM4nzAIV-31">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="410" />
+              <mxPoint x="710" y="650" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-59" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="any &#39;GeographicCoords&#39;&amp;nbsp;&lt;div&gt;values &#39;Null&#39;?&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="80" x="570" y="370" as="geometry" />
@@ -429,6 +437,21 @@
         </mxCell>
         <mxCell id="8B9BxLksavhCE5MKoBQG-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="transfer ArcGIS project to UCO herbarium" vertex="1">
           <mxGeometry height="60" width="120" x="1200" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-4" edge="1" parent="1" source="PoqB0VKsO3DA9JWfZ92f-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="PoqB0VKsO3DA9JWfZ92f-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import pandas" vertex="1">
+          <mxGeometry height="30" width="120" x="70" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-5" edge="1" parent="1" source="PoqB0VKsO3DA9JWfZ92f-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="mv5gH8MdkmgmsuV4fE6p-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="import geopandas" vertex="1">
+          <mxGeometry height="30" width="120" x="70" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="PoqB0VKsO3DA9JWfZ92f-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="655" y="380" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
