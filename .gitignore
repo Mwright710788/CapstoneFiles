@@ -1,12 +1,15 @@
 # Data files
-data/*.csv
+data/CSUoccurrences.csv
+data/cleanedCSUoccurrences.csv
 data/*.xlsx
-data/*.json
 *.shp
 *.dbf
 *.shx
 *.prj
 *.gdb
+
+# Logs
+logs/*.csv
 
 # Python
 __pycache__/
