@@ -31,6 +31,33 @@ countyData = gpd.read_file(countiesFile)
 trackFile = "./data/okStateTracking.csv"
 trackData = pd.read_csv(trackFile)
 
+##create logs directory if it doesn't exist
+os.makedirs("./logs/", exist_ok = True)
+
+###################################################################################################
+####
+####Define sensitive species list for redaction in final dataset;
+####this list includes all species within the Orchidaceae family, as
+####well as Echinocactus texensis, a federally listed endangered species
+####
+####Note: to add additional species to the sensitive list, simply add the exact species name to
+####the list in the following format:
+####
+####     excludedSpecies = [
+####          "Echinocactus texensis",
+####          "Genus species"
+####     ]
+####
+####
+###################################################################################################
+
+excludedSpecies = [
+    "Echinocactus texensis"
+]
+
+excludedFamilies = [
+    "Orchidaceae"
+]
 
 ###################################################################################################
 ####
@@ -148,14 +175,14 @@ print("\n")
 ##export mismatched entries w/ print statement showing location of export file
 exportMismatches = misMatched[["id", "county", "stateProvince", "NAME",
                                "decimalLongitude", "decimalLatitude"]]
-mismatchFile = "./data/countyMismatches.csv"
+mismatchFile = "./logs/countyMismatches.csv"
 exportMismatches.to_csv(mismatchFile, index = False)
 print(f"Exporting mismatched specimen entries to: '{mismatchFile}...'")
 
 ##export entries not in Oklahoma w/ print statement showing location of export file
 exportNotInOK = notInOK[["id", "county", "stateProvince", "NAME",
                                "decimalLongitude", "decimalLatitude"]]
-notInOkFile = "./data/entriesNotInOK.csv"
+notInOkFile = "./logs/entriesNotInOK.csv"
 exportNotInOK.to_csv(notInOkFile, index = False)
 print(f"Exporting specimen entries outside of Oklahoma to: '{notInOkFile}...'")
 print("\n")
@@ -175,14 +202,21 @@ csuData["genusSpecies"] = (
     )
 )
 
-##merge tracking list with csuData to add tracking status information w/ print statements to confirm merge 
-##and # of successful matches with tracking list
-matchCount = csuData[csuData['genusSpecies'].isin(trackData['Scientific Name'])]['genusSpecies'].count()
+##merge tracking list with csuData to add tracking status information
 csuData = csuData.merge(trackData[["Scientific Name", "State Rank", "Global Rank", "Federal Status"]], 
                         left_on="genusSpecies", right_on="Scientific Name", how = "left")
+matchRecords = csuData[csuData["genusSpecies"].isin(trackData["Scientific Name"])]
+matchCount = len(matchRecords)
+trackingMatchFile = "./logs/trackingListMatches.csv"
+
+##print statements to confirm merge and # of successful matches 
+##with tracking list and export log of successful matches
 print("Merging OK tracking list with CSUoccurrences dataset to add ranking information...")
 print(f"Number of records in CSUoccurrences after merge: {len(csuData)}")
 print(f"Number of successful joins with tracking list: {matchCount}")
+print("\n")
+matchRecords.to_csv(trackingMatchFile, index = False)
+print(f"Exporting successful joins with tracking list to: '{trackingMatchFile}...'")
 print("\n")
 
 
@@ -192,9 +226,35 @@ print("\n")
 ####
 ###################################################################################################
 
-##filteredData = csuData[csuData['family'] != "Orchidaceae"]
-##removedCount = len(csuData) - len(filteredData)
+print("Redacting records of sensitive species and exporting cleaned dataset...")
 
-##print(csuData.shape)
-##print(filteredData.shape)
-##print(f"Number of records removed: {removedCount}")
+finalFilteredData = csuData[
+    (~csuData['family'].isin(excludedFamilies)) &
+    (~csuData['scientificName'].isin(excludedSpecies))
+]
+removedCount = len(csuData) - len(finalFilteredData)
+cleanedFile = "./data/cleanedCSUoccurrences.csv"
+
+excludedSpecimens = csuData[
+    (csuData['family'].isin(excludedFamilies)) |
+    (csuData['scientificName'].isin(excludedSpecies))
+]
+excludedSpecimensFile = "./logs/excludedSensitiveSpecimens.csv"
+excludedSpecimens.to_csv(excludedSpecimensFile, index = False)
+
+print(f"Number of specimens removed that belong to the excluded families / species: {removedCount}")
+print(f"Exporting records of excluded sensitive species to: '{excludedSpecimensFile}...'")
+print("\n")
+
+finalFilteredData.to_csv(cleanedFile, index = False)
+print(f"Exporting cleaned dataset to: '{cleanedFile}...'")
+print("\n")
+print("ETL pipeline complete!")
+print("CSU occurrences dataset has been cleaned and exported for use in the UCO Herbarium Specimen geospatial analysis.")
+print("\n")
+
+###################################################################################################
+####
+####End of UCO Herbarium ETL Pipeline
+####
+###################################################################################################
