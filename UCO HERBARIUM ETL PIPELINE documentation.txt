@@ -1,0 +1,184 @@
+UCO HERBARIUM ETL PIPELINE
+User Documentation
+Prepared for: Dr. Messick, University of Central Oklahoma Herbarium
+Prepared by: Marc Wright
+Date: June 2026
+
+================================================================================
+
+WHAT THIS PIPELINE DOES
+--------------------------------------------------------------------------------
+
+This pipeline takes a raw specimen occurrence file downloaded from the TORCH
+Portal and produces a cleaned, validated dataset ready for use in ArcGIS and
+the UCO Herbarium StoryMap. It performs the following steps automatically each
+time it is run:
+
+  1. Fills in missing coordinates using authoritative county centroids
+  2. Checks that each specimen's coordinates actually fall within its listed county
+  3. Removes records with coordinates outside Oklahoma
+  4. Matches specimens against the Oklahoma State Tracking List to add
+     conservation ranking information
+  5. Removes sensitive species records (orchids and Horse Crippler Cactus)
+     from the public-facing dataset
+  6. Exports the cleaned dataset and a set of log files for review
+
+
+================================================================================
+
+BEFORE YOU RUN THE PIPELINE
+--------------------------------------------------------------------------------
+
+Step 1 — Download a fresh occurrence file from the TORCH Portal
+  - Go to: https://portal.torcherbaria.org/
+  - Export the UCO collection in Darwin Core CSV format
+  - Save the file as: CSUoccurrences.csv
+
+Step 2 — Replace the old file
+  - Navigate to the pipeline folder on your computer
+  - Open the "data" subfolder
+  - Replace the existing CSUoccurrences.csv with your new download
+  - Keep the filename exactly the same: CSUoccurrences.csv
+
+Step 3 — Do not move or rename any other files
+  - okCounties.geojson and okStateTracking.csv should remain in the data folder
+  - These files do not need to be replaced
+
+
+================================================================================
+
+HOW TO RUN THE PIPELINE
+--------------------------------------------------------------------------------
+
+  1. Open ArcGIS Pro
+  2. Open the Python window or launch the arcgispro-py3 environment
+  3. Navigate to the pipeline folder
+  4. Run: UCO_Herbarium_ETL_Pipeline.py
+  5. The pipeline will print progress messages as it runs
+  6. When complete, you will see: "ETL pipeline complete!"
+
+
+================================================================================
+
+UNDERSTANDING THE OUTPUT
+--------------------------------------------------------------------------------
+
+CLEANED DATASET
+  Location: data/cleanedCSUoccurrences.csv
+  
+  This is the main output file. It contains all validated Oklahoma specimens
+  with sensitive species removed. This file is ready for import into ArcGIS
+  and publication to ArcGIS Online.
+
+  New fields added by the pipeline:
+
+  geographicPrecision
+    Describes the reliability of each record's coordinates:
+    - True     = coordinates were verified by a georeferencer
+    - False    = coordinates were assigned but not verified
+    - Assigned = no coordinates were provided; the county center point
+                 was used as a placeholder
+
+  calcLat / calcLon
+    The working coordinates used by the pipeline. For most records these
+    match the original coordinates. For records with no original coordinates,
+    these contain the county center point values.
+
+  State Rank / Global Rank / Federal Status
+    Conservation ranking information from the Oklahoma State Tracking List.
+    Blank for species not on the tracking list.
+
+
+LOG FILES
+  Location: logs/ subfolder
+
+  countyMismatches.csv
+    Records where the specimen's coordinates do not fall within the county
+    listed in the data. These records are retained in the cleaned dataset
+    but flagged here for your review. A mismatch may indicate a data entry
+    error or a coordinate error in the original record.
+
+  entriesNotInOK.csv
+    Records whose coordinates fall completely outside Oklahoma. These have
+    been removed from the cleaned dataset. Typically these are specimens
+    collected in neighboring states or records with coordinate errors.
+
+  trackingListMatches.csv
+    All specimen records that successfully matched an entry in the Oklahoma
+    State Tracking List. Useful for reviewing which tracked species are
+    represented in the UCO collection.
+
+  excludedSensitiveSpecies.csv
+    Records that were removed from the public-facing dataset. Currently
+    includes all Orchidaceae (orchid) records and Echinocactus texensis
+    (Horse Crippler Cactus). These records are preserved here for internal
+    reference but will not appear in the cleaned dataset or StoryMap.
+
+
+================================================================================
+
+ADDING SPECIES TO THE SENSITIVE SPECIES LIST
+--------------------------------------------------------------------------------
+
+If additional species need to be excluded from the public-facing dataset in
+the future, contact the pipeline administrator (Marc Wright) to update the
+exclusion list in the script. The list is clearly marked near the top of the
+file and can be updated by adding the exact scientific name.
+
+
+================================================================================
+
+WHAT TO DO IF SOMETHING GOES WRONG
+--------------------------------------------------------------------------------
+
+The pipeline will not change or delete your original CSUoccurrences.csv file.
+If something goes wrong, simply run the pipeline again.
+
+Common issues:
+
+  "FileNotFoundError: CSUoccurrences.csv"
+    The pipeline cannot find the data file. Make sure CSUoccurrences.csv is
+    in the "data" subfolder and the filename is spelled exactly correctly.
+
+  "FileNotFoundError: okCounties.geojson"
+    The county boundary file is missing from the data folder. Do not delete
+    or move this file.
+
+  The pipeline runs but the cleaned file looks wrong
+    Check the log files in the logs/ subfolder. The countyMismatches.csv
+    and entriesNotInOK.csv files will show you which records had issues.
+
+For any other issues, contact Marc Wright for support.
+
+
+================================================================================
+
+FILE STRUCTURE REFERENCE
+--------------------------------------------------------------------------------
+
+UCO_Herbarium_ETL_Pipeline/
+│
+├── data/
+│   ├── CSUoccurrences.csv            <- Replace this file each run
+│   ├── okCounties.geojson            <- Do not modify
+│   ├── okStateTracking.csv           <- Do not modify
+│   └── cleanedCSUoccurrences.csv     <- Pipeline output (created on each run)
+│
+├── logs/
+│   ├── countyMismatches.csv          <- Records flagged for review
+│   ├── entriesNotInOK.csv            <- Records removed (outside Oklahoma)
+│   ├── trackingListMatches.csv       <- Tracking list matches
+│   └── excludedSensitiveSpecies.csv  <- Redacted records
+│
+└── UCO_Herbarium_ETL_Pipeline.py     <- The pipeline script
+
+
+================================================================================
+
+CONTACT
+--------------------------------------------------------------------------------
+
+Pipeline developed by Marc Wright
+For questions or updates, contact: marc.wright.710788@gmail.com
+
+================================================================================
