@@ -105,17 +105,27 @@ print("Number of null values in calcLat and calcLon after centroid calculation:"
 print(csuData[["calcLat", "calcLon"]].isna().sum())
 print("\n")
 
+##test to see is any records still have null values in calcLat / calcLon after centroid assignment;
+##if so, flag these records as unreferenceable in georef_notes and export log file for review.
+##if no values are still null, print statement confirming that all records have coordinates or county names
+##for georeferencing and proceed with ETL pipeline
 stillNull = csuData["calcLat"].isna()
+numStillNull = stillNull.sum()
 csuData.loc[stillNull, "georef_notes"] = "UNGEOREFERENCEABLE - no coordinates, no county"
 unreferencedSpecimensFile = "./logs/ungeoreferenceableSpecimens.csv"
-print(f"Records flagged as ungeoreferenceable: {stillNull.sum()}")
-print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
-print("\n")
-print(f"Exporting ungeoreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
-csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
-print(f"Dropping unreferenceable specimens from CSUoccurrences.csv...")
-csuData = csuData[~stillNull].reset_index(drop=True)
-print("\n")
+print(f"Records flagged as ungeoreferenceable: {numStillNull}")
+if numStillNull > 0:
+    print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
+    print("\n")
+    print(f"Exporting ungeoreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
+    csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
+    print(f"Dropping {numStillNull} unreferenceable specimens from CSUoccurrences.csv...")
+    csuData = csuData[~stillNull].reset_index(drop=True)
+    print("\n")
+else:
+    print("No unreferenceable records found - all records have either coordinates or county name for georeferencing.")
+    print("Continuing with ETL pipeline...")
+    print("\n")
 
 
 ###################################################################################################
