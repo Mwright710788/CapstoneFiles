@@ -2,6 +2,8 @@
 data/CSUoccurrences.csv
 data/cleanedCSUoccurrences.csv
 data/*.xlsx
+data/countySHP/*
+!data/countySHP/.gitkeep
 *.shp
 *.dbf
 *.shx

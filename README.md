@@ -107,6 +107,7 @@ Records belonging to excluded families or species are removed from the public-fa
 - **Family:** Orchidaceae (all orchid species)
 - **Species:** *Echinocactus texensis* (Horse Crippler Cactus)
 
+### Notes
 To add additional excluded species or families, edit the lists near the top of the script:
 
 ```python
@@ -121,6 +122,31 @@ excludedFamilies = [
 ]
 ```
 
+## Block 6: County-Level Aggregation
+
+Block 6 consumes the final redacted specimen dataset (`finalFilteredData`) produced in Block 5 and aggregates specimen counts and Oklahoma state ranking counts to the county level. The output is a shapefile with one row per Oklahoma county containing the following derived fields:
+
+| Field | Description |
+|-------|-------------|
+| `specCnt` | Total number of non-sensitive specimens recorded in that county |
+| `trackCnt` | Number of specimens in that county with a successful Oklahoma Tracking List match |
+| `rankS1` | Count of S1-ranked specimens per county (critically imperiled) |
+| `rankS2` | Count of S2-ranked specimens per county (imperiled) |
+| `rankS3` | Count of S3-ranked specimens per county (vulnerable) |
+| `rankSH` | Count of SH-ranked specimens per county (possibly extirpated) |
+
+### Output
+
+The county shapefile is written to `./data/countySHP/countyDataOutput.shp` and is intended for use as the choropleth base layer in ArcGIS Online and the UCO Herbarium StoryMap.
+
+### Notes
+
+- Aggregation is performed entirely via pandas `value_counts()` and `groupby/unstack` — no additional spatial join is required after Block 3.
+- Counties with zero specimens receive `0` in all count fields via `fillna(0)`.
+- The `./data/countySHP/` directory is excluded from version control via `.gitignore`. A `.gitkeep` file preserves the folder structure in the repository.
+- Sensitive species records (Orchidaceae family and *Echinocactus texensis*) are excluded from all counts as they are redacted in Block 5 prior to aggregation.
+
+
 ---
 
 ## Output
@@ -128,10 +154,11 @@ excludedFamilies = [
 | File | Description |
 |------|-------------|
 | `./data/cleanedCSUoccurrences.csv` | Final cleaned dataset for geospatial analysis and AGOL publication |
+| `./data/countySHP/countyDataOutput.shp` | Final SHP files of county data with aggregated specimen count info |
 | `./logs/countyMismatches.csv` | Records flagged for manual coordinate review |
 | `./logs/entriesNotInOK.csv` | Records removed — coordinates outside Oklahoma |
 | `./logs/trackingListMatches.csv` | Records matched to Oklahoma State Tracking List |
-| `./logs/excludedSensitiveSpecies.csv` | Records redacted from public-facing deliverables |
+| `./logs/excludedSensitiveSpecimens.csv` | Records redacted from public-facing deliverables |
 
 ---
 

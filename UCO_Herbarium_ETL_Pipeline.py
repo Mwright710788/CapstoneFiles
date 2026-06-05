@@ -261,6 +261,8 @@ csuData["genusSpecies"] = (
 ##merge tracking list with csuData to add tracking status information
 csuData = csuData.merge(trackData[["Scientific Name", "State Rank", "Global Rank", "Federal Status"]], 
                         left_on="genusSpecies", right_on="Scientific Name", how = "left")
+csuData["onTrackingList"] = csuData["State Rank"].notna()
+
 matchRecords = csuData[csuData["genusSpecies"].isin(trackData["Scientific Name"])]
 matchCount = len(matchRecords)
 trackingMatchFile = "./logs/trackingListMatches.csv"
@@ -284,13 +286,17 @@ print("\n")
 
 print("Redacting records of sensitive species and exporting cleaned dataset...")
 
+##filter out entries that fall within the excludedSpecies and excludedFamilies lists
 finalFilteredData = csuData[
     (~csuData['family'].isin(excludedFamilies)) &
     (~csuData['scientificName'].isin(excludedSpecies))
 ]
+
+##variables for number of sensitive species records and for final cleaned file
 removedCount = len(csuData) - len(finalFilteredData)
 cleanedFile = "./data/cleanedCSUoccurrences.csv"
 
+##create separate dataframe of all excluded records and export to csv
 excludedSpecimens = csuData[
     (csuData['family'].isin(excludedFamilies)) |
     (csuData['scientificName'].isin(excludedSpecies))
@@ -298,16 +304,73 @@ excludedSpecimens = csuData[
 excludedSpecimensFile = "./logs/excludedSensitiveSpecimens.csv"
 excludedSpecimens.to_csv(excludedSpecimensFile, index = False)
 
+#print statement summarizing number of records and export information#
 print(f"Number of specimens removed that belong to the excluded families / species: {removedCount}")
 print(f"Exporting records of excluded sensitive species to: '{excludedSpecimensFile}...'")
 print("\n")
 
+##create final specimen dataset and export to csv
 finalFilteredData.to_csv(cleanedFile, index = False)
 print(f"Exporting cleaned dataset to: '{cleanedFile}...'")
 print("\n")
-print("ETL pipeline complete!")
 print("CSU occurrences dataset has been cleaned and exported for use in the UCO Herbarium Specimen geospatial analysis.")
 print("\n")
+
+###################################################################################################
+####
+####Block #6: Aggregation counts of # of specimens per county and # of state rankings per county
+####
+###################################################################################################
+
+print("Aggregating specimen and tracking list counts to county level...")
+print("\n")
+
+##reset dataframe index and set countyFIPS as string to match okCounty dataset
+finalFilteredData = finalFilteredData.reset_index(drop = True)
+finalFilteredData["countyFIPS"] = finalFilteredData["countyFIPS"].astype(str)
+
+##create temporary dataset to store countyFIPS with specimen count per county
+specCnts = finalFilteredData["countyFIPS"].value_counts().reset_index()
+specCnts.columns = ["countyFIPS", "specCnt"]
+
+##merge countyData with specCnts
+countyData = countyData.merge(specCnts, left_on = "GEOID", right_on = "countyFIPS", how = "left")
+countyData["specCnt"] = countyData["specCnt"].fillna(0)
+
+##create temporary dataset to store countyFIPS with tracking list join count per county
+trackCnts = finalFilteredData[finalFilteredData["onTrackingList"]]["countyFIPS"].value_counts().reset_index()
+trackCnts.columns = ["countyFIPS", "trackCnt"]
+
+##merge countyData with trackCnts
+countyData = countyData.merge(trackCnts, left_on = "GEOID", right_on = "countyFIPS", how = "left")
+countyData["trackCnt"] = countyData["trackCnt"].fillna(0)
+
+##create temp dataset that creates pivot columns of state ranking per county
+rankingPivot = finalFilteredData.groupby(['countyFIPS', 'State Rank']).size().unstack(fill_value=0)
+rankingPivot.columns = [f'rank{col}' for col in rankingPivot.columns]
+rankingPivot = rankingPivot.reset_index()
+
+##merge countyData with trackCnts
+countyData = countyData.merge(rankingPivot, left_on = "GEOID", right_on = "countyFIPS", how='left')
+
+##filter out which columns to permanently join to countyExport shp file
+rankCols = ["rankS1", "rankS2", "rankS3", "rankSH"]
+countyData[rankCols] = countyData[rankCols].fillna(0)
+
+##create countySHP folder as needed and export finalized county shp files
+os.makedirs("./data/countySHP", exist_ok = True)
+keepFields = ["GEOID", "NAME", "specCnt", "trackCnt", "rankS1", "rankS2", "rankS3", "rankSH", "geometry"]
+countyExport = countyData[keepFields]
+countyExportSHP = "./data/countySHP/countyDataOutput.shp"
+
+##print statements informing user of file export
+print(f"Exporting aggregated county information in shapefile format to: {countyExportSHP}")
+print("\n")
+countyExport.to_file(countyExportSHP)
+
+
+print("ETL pipeline complete!")
+
 
 ###################################################################################################
 ####
@@ -315,4 +378,3 @@ print("\n")
 ####
 ###################################################################################################
 
-print()

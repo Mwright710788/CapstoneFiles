@@ -10,18 +10,21 @@ WHAT THIS PIPELINE DOES
 --------------------------------------------------------------------------------
 
 This pipeline takes a raw specimen occurrence file downloaded from the TORCH
-Portal and produces a cleaned, validated dataset ready for use in ArcGIS and
-the UCO Herbarium StoryMap. It performs the following steps automatically each
-time it is run:
+Portal and produces two outputs ready for use in ArcGIS and the UCO Herbarium
+StoryMap: a cleaned specimen dataset and a county-level summary shapefile for
+choropleth mapping. It performs the following steps automatically each time
+it is run:
 
   1. Fills in missing coordinates using authoritative county centroids
-  2. Checks that each specimen's coordinates actually fall within its listed county
+  2. Checks that each specimen's coordinates fall within its listed county
   3. Removes records with coordinates outside Oklahoma
   4. Matches specimens against the Oklahoma State Tracking List to add
      conservation ranking information
   5. Removes sensitive species records (orchids and Horse Crippler Cactus)
      from the public-facing dataset
-  6. Exports the cleaned dataset and a set of log files for review
+  6. Aggregates specimen and conservation ranking counts to the county level
+     and exports a county shapefile for choropleth mapping
+  7. Exports the cleaned dataset and a set of log files for review
 
 
 ================================================================================
@@ -63,12 +66,12 @@ HOW TO RUN THE PIPELINE
 UNDERSTANDING THE OUTPUT
 --------------------------------------------------------------------------------
 
-CLEANED DATASET
+CLEANED SPECIMEN DATASET
   Location: data/cleanedCSUoccurrences.csv
 
-  This is the main output file. It contains all validated Oklahoma specimens
-  with sensitive species removed. This file is ready for import into ArcGIS
-  and publication to ArcGIS Online.
+  This is the primary specimen output. It contains all validated Oklahoma
+  specimens with sensitive species removed. This file is ready for import
+  into ArcGIS and publication to ArcGIS Online as a point feature layer.
 
   New fields added by the pipeline:
 
@@ -86,15 +89,63 @@ CLEANED DATASET
 
   countyNameFromJoin
     The authoritative county name confirmed by spatial join against the
-    Oklahoma counties layer.
+    Oklahoma counties boundary layer.
 
   countyFIPS
     The 5-digit federal FIPS code for the specimen's confirmed county.
     Used as a join key in ArcGIS and the Dashboard application.
 
+  onTrackingList
+    TRUE if the specimen matched an entry in the Oklahoma State Tracking
+    List. FALSE if no match was found.
+
   State Rank / Global Rank / Federal Status
     Conservation ranking information from the Oklahoma State Tracking List.
     Blank for species not on the tracking list.
+
+
+COUNTY SUMMARY SHAPEFILE
+  Location: data/countySHP/countyDataOutput.shp
+
+  This shapefile summarizes specimen data at the county level and is the
+  data source for the choropleth map in the UCO Herbarium StoryMap and
+  ArcGIS Online dashboard. It contains one row per Oklahoma county with
+  the following fields:
+
+  GEOID
+    The 5-digit FIPS code uniquely identifying each county.
+
+  NAME
+    The county name.
+
+  specCnt
+    Total number of non-sensitive specimens recorded in that county.
+
+  trackCnt
+    Number of specimens in that county with a successful Oklahoma
+    Tracking List match.
+
+  rankS1
+    Number of S1-ranked specimens in that county.
+    S1 = Critically imperiled — highest conservation concern.
+
+  rankS2
+    Number of S2-ranked specimens in that county.
+    S2 = Imperiled.
+
+  rankS3
+    Number of S3-ranked specimens in that county.
+    S3 = Vulnerable.
+
+  rankSH
+    Number of SH-ranked specimens in that county.
+    SH = Possibly extirpated from Oklahoma.
+
+  Note: Counties with no specimens will show 0 in all count fields.
+  Sensitive species records are excluded from all counts.
+
+  This file is regenerated automatically every time the pipeline runs.
+  No manual steps are required to update the county map data.
 
 
 LOG FILES
@@ -114,7 +165,8 @@ LOG FILES
   unreferenceableSpecimens.csv
     Records with no coordinates and no county name that could not be
     georeferenced by any method. These have been removed from the cleaned
-    dataset and require manual review.
+    dataset and require manual review. This file is only created if
+    unreferenceable records are found.
 
   trackingListMatches.csv
     All specimen records that successfully matched an entry in the Oklahoma
@@ -123,16 +175,9 @@ LOG FILES
 
   excludedSensitiveSpecimens.csv
     Records removed from the public-facing dataset due to sensitive species
-    status. Retained here for internal herbarium use only.
-
-
-================================================================================
-
-  excludedSensitiveSpecies.csv
-    Records that were removed from the public-facing dataset. Currently
-    includes all Orchidaceae (orchid) records and Echinocactus texensis
-    (Horse Crippler Cactus). These records are preserved here for internal
-    reference but will not appear in the cleaned dataset or StoryMap.
+    status. Currently includes all Orchidaceae (orchid) records and
+    Echinocactus texensis (Horse Crippler Cactus). Retained here for
+    internal herbarium use only.
 
 
 ================================================================================
@@ -179,18 +224,21 @@ FILE STRUCTURE REFERENCE
 UCO_Herbarium_ETL_Pipeline/
 │
 ├── data/
-│   ├── CSUoccurrences.csv            <- Replace this file each run
-│   ├── okCounties.geojson            <- Do not modify
-│   ├── okStateTracking.csv           <- Do not modify
-│   └── cleanedCSUoccurrences.csv     <- Pipeline output (created on each run)
+│   ├── CSUoccurrences.csv              <- Replace this file each run
+│   ├── okCounties.geojson              <- Do not modify
+│   ├── okStateTracking.csv             <- Do not modify
+│   ├── cleanedCSUoccurrences.csv       <- Pipeline output (created each run)
+│   └── countySHP/
+│       └── countyDataOutput.shp        <- County summary output (created each run)
 │
 ├── logs/
-│   ├── countyMismatches.csv          <- Records flagged for review
-│   ├── entriesNotInOK.csv            <- Records removed (outside Oklahoma)
-│   ├── trackingListMatches.csv       <- Tracking list matches
-│   └── excludedSensitiveSpecies.csv  <- Redacted records
+│   ├── countyMismatches.csv            <- Records flagged for review
+│   ├── entriesNotInOK.csv              <- Records removed (outside Oklahoma)
+│   ├── trackingListMatches.csv         <- Tracking list matches
+│   ├── excludedSensitiveSpecimens.csv  <- Redacted records
+│   └── unreferenceableSpecimens.csv    <- Records with no location data (conditional)
 │
-└── UCO_Herbarium_ETL_Pipeline.py     <- The pipeline script
+└── UCO_Herbarium_ETL_Pipeline.py       <- The pipeline script
 
 
 ================================================================================
