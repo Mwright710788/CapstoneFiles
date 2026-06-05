@@ -111,13 +111,13 @@ print("\n")
 ##for georeferencing and proceed with ETL pipeline
 stillNull = csuData["calcLat"].isna()
 numStillNull = stillNull.sum()
-csuData.loc[stillNull, "georef_notes"] = "UNGEOREFERENCEABLE - no coordinates, no county"
-unreferencedSpecimensFile = "./logs/ungeoreferenceableSpecimens.csv"
-print(f"Records flagged as ungeoreferenceable: {numStillNull}")
+csuData.loc[stillNull, "georef_notes"] = "UNREFERENCEABLE - no coordinates, no county"
+unreferencedSpecimensFile = "./logs/unreferenceableSpecimens.csv"
+print(f"Records flagged as unreferenceable: {numStillNull}")
 if numStillNull > 0:
     print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
     print("\n")
-    print(f"Exporting ungeoreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
+    print(f"Exporting unreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
     csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
     print(f"Dropping {numStillNull} unreferenceable specimens from CSUoccurrences.csv...")
     csuData = csuData[~stillNull].reset_index(drop=True)
@@ -193,9 +193,12 @@ csuGeoData = gpd.GeoDataFrame(
     crs = "EPSG:4326"
 )
 
+##create a subset of countyData with only necessary columns for spatial join
+reducedCountyRecords = countyData[["NAME", "GEOID", "geometry"]]
+
 ##perform spatial join between csuOccurrences and OKcounties to
 ##ensure geographic precision
-joinedPointsWithCounty = gpd.sjoin(csuGeoData, countyData,
+joinedPointsWithCounty = gpd.sjoin(csuGeoData, reducedCountyRecords,
                                    how = "left",
                                    predicate = "within")
 
@@ -218,7 +221,6 @@ print(f"Points listed outside of Oklahoma: {len(notInOK)}")
 print("Removing records listed outside of Oklahoma from dataset...")
 print("\n")
 
-
 ##export mismatched entries w/ print statement showing location of export file
 exportMismatches = misMatched[["id", "county", "stateProvince", "NAME",
                                "decimalLongitude", "decimalLatitude"]]
@@ -234,9 +236,16 @@ exportNotInOK.to_csv(notInOkFile, index = False)
 print(f"Exporting specimen entries outside of Oklahoma to: '{notInOkFile}...'")
 print("\n")
 
-##remove notInOk entries from CSUoccurrences and proceed to tracking list join w/ print 
-##statement informing user of removal
-csuData = csuData[~csuData["id"].isin(notInOK["id"])]
+##new CSUoccurrences dataset with county FIPS information needed for geospatial analysis
+csuData = joinedPointsWithCounty[~joinedPointsWithCounty["id"].isin(notInOK["id"])]
+csuData = csuData.drop(columns = ["index_right"])
+csuData = csuData.rename(columns = {"NAME": "countyNameFromJoin", "GEOID": "countyFIPS"})
+
+###################################################################################################
+####
+####Block #4: Table join to add tracking list information 
+####
+###################################################################################################
 
 csuData["genusSpecies"] = (
     csuData["genus"].str.strip().str.capitalize() + " " +
@@ -269,7 +278,7 @@ print("\n")
 
 ###################################################################################################
 ####
-####Block #4: Redaction of sensitive species records and export of cleaned dataset
+####Block #5: Redaction of sensitive species records and export of cleaned dataset
 ####
 ###################################################################################################
 

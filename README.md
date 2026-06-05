@@ -85,20 +85,23 @@ UCO_Herbarium_ETL_Pipeline/
 ## Pipeline Blocks
 
 ### Block 1 — Centroid Assignment
-Records with null coordinates but a valid county name are assigned the authoritative centroid of their listed county, calculated from `okCounties.geojson` using EPSG:5070 (NAD83 Conus Albers Equal Area) for geometric accuracy. Centroid values are stored in `calcLat` and `calcLon` fields; original coordinates are preserved in `decimalLatitude` and `decimalLongitude`.
+Records with null coordinates but a valid county name are assigned the authoritative centroid of their listed county, calculated from `okCounties.geojson` using EPSG:5070 (NAD83 Conus Albers Equal Area) for geometric accuracy. Centroid values are stored in `calcLat` and `calcLon` fields; original coordinates are preserved in `decimalLatitude` and `decimalLongitude`. 
+Any entries with no county name and null coordinates are removed from dataset and exported to './logs/unreferenceableSpecimens.csv'
 
 ### Block 2 — Geographic Precision Field
 A `geographicPrecision` field is created with three values:
-- `True` — coordinates verified by georeferencer
-- `False` — coordinates assigned but not verified
-- `Assigned` — coordinates not provided; county centroid assigned by pipeline
+- `PRECISE` — coordinates verified by georeferencer
+- `COUNTY CENTROID` — coordinates assigned but not verified; mostly county centroid coordinates
+- `ASSIGNED CENTROID` — coordinates not provided; county centroid assigned by pipeline
 
 ### Block 3 — Spatial Join and County Validation
 All records are spatially joined against Oklahoma county polygons. Records whose coordinates don't fall within their listed county are flagged and exported to `./logs/countyMismatches.csv` for manual review. Records falling outside Oklahoma entirely are removed from the dataset and exported to `./logs/entriesNotInOK.csv`.
+County information is permanently joined to dataset, including countyNameFromJoin and the countyFIPS code; these values will be used in the geospatial analysis.
 
+### Block 4 — Table join with OK state vegetative tracking list [available at https://obis.ou.edu/tracking-list]
 The pipeline also enriches each record with columns from the Oklahoma State Tracking List (`State Rank`, `Global Rank`, `Federal Status`) via a composite taxonomic key built from genus, specific epithet, and infraspecific rank.
 
-### Block 4 — Sensitive Species Redaction
+### Block 5 — Sensitive Species Redaction
 Records belonging to excluded families or species are removed from the public-facing dataset and logged to `./logs/excludedSensitiveSpecies.csv`. The default exclusion list is:
 
 - **Family:** Orchidaceae (all orchid species)
