@@ -96,6 +96,9 @@ lonMask = csuData["calcLon"].isnull()
 lookupLat = countyData.set_index("cleanName")["county_lat"]
 lookupLon = countyData.set_index("cleanName")["county_lon"]
 
+##create boolean field for records that had centroid assigned
+csuData["centroidAssigned"] = latMask
+
 ##use .loc to fill in the missing coordinate values in df
 csuData.loc[latMask, "calcLat"] = csuData.loc[latMask, "cleanName"].map(lookupLat)
 csuData.loc[lonMask, "calcLon"] = csuData.loc[lonMask, "cleanName"].map(lookupLon)
@@ -143,10 +146,11 @@ print("\n")
 conditions = [
     (csuData["georeferenceVerificationStatus"] == True),
     (csuData["georeferenceVerificationStatus"] == False),
-    (csuData["georeferenceVerificationStatus"].isna())
+    (csuData["centroidAssigned"] == True),
+    ((csuData["centroidAssigned"] == False) & (csuData["georeferenceVerificationStatus"].isna()))
 ]
 
-choices = ["PRECISE", "COUNTY CENTROID", "ASSIGNED CENTROID"]
+choices = ["PRECISE", "COUNTY CENTROID", "ASSIGNED CENTROID", "PRECISION UNVERIFIED"]
 csuData["geographicPrecision"] = np.select(conditions,
                                            choices,
                                            default = "Unknown")
@@ -154,23 +158,29 @@ csuData["geographicPrecision"] = np.select(conditions,
 preciseRecords = len(csuData[(csuData["geographicPrecision"]) == "PRECISE"])
 countyCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "COUNTY CENTROID"])
 assignedCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "ASSIGNED CENTROID"])
+precisionUnverifiedRecords = len(csuData[(csuData["geographicPrecision"]) == "PRECISION UNVERIFIED"])
 unknownRecords = len(csuData[(csuData["geographicPrecision"]) == "Unknown"])
 totalRecords = len(csuData)
 
 ##print statements to sum number of records in each category of geographicPrecision
-print("""NOTE: 'Assigned' indicates records where county centroid was calculated
-      and assigned due to no value given in the georeferenceVerificationStatus field; 
+print("""NOTE: 'ASSIGNED CENTROID' indicates records where county centroid was calculated
+      and assigned due to no value given in the georeferenceVerificationStatus field and
+      no geographic coordinates given; 'PRECISION UNVERIFIED' indicates records where geographic
+      coordinates were provided, but geographicVerificationStatus had null value;
       coordinate accuracy could not be verified for these records.""")
 print("\n")
 print(f"Total number of specimen records: {totalRecords}")
 print(f"Total number of geographically precise records: {preciseRecords}")
 print(f"Total number of records with county level precision: {countyCentroidRecords}")
 print(f"Total number of records with calculated county centroid: {assignedCentroidRecords}")
+print(f"Total number of records with unverified precision: {precisionUnverifiedRecords}")
 print("\n")
 print("Percentages of each category:")
 print(f"     Geographically precise records: {round(preciseRecords/totalRecords * 100,2)}%")
 print(f"     Records with county level precision: {round(countyCentroidRecords/totalRecords * 100,2)}%")
 print(f"     Records with calculated county centroid: {round(assignedCentroidRecords/totalRecords * 100,2)}%")
+print(f"     Records with unverified precision: {round(precisionUnverifiedRecords/totalRecords * 100,2)}%")
+print(f"     Records outside of these categories: {round(unknownRecords/totalRecords * 100,2)}%")
 print("\n")
 
 ##unknown condition: flags a warning if any records exist outside of the three conditions
