@@ -16,11 +16,11 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 ##location of CSUoccurrences csv file
 csuFile = "./data/CSUoccurrences.csv"
-csuData = pd.read_csv(csuFile, encoding = 'latin-1',
+csuData = pd.read_csv(csuFile, encoding = "latin-1",
                       low_memory = False,
                       na_values = [""],
-                      dtype = {'identificationQualifier': str,
-                               'references': str})
+                      dtype = {"identificationQualifier": str,
+                               "references": str})
 csuData = csuData.reset_index(drop = True)
 
 ##location of okCounties csv file
@@ -115,12 +115,12 @@ csuData.loc[stillNull, "georef_notes"] = "UNREFERENCEABLE - no coordinates, no c
 unreferencedSpecimensFile = "./logs/unreferenceableSpecimens.csv"
 print(f"Records flagged as unreferenceable: {numStillNull}")
 if numStillNull > 0:
-    print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
+    print(f"NOTE: check county column in "{unreferencedSpecimensFile}" log file for null county name values...")
     print("\n")
-    print(f"Exporting unreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
+    print(f"Exporting unreferenceable records for manual review to "{unreferencedSpecimensFile}"...")
     csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
     print(f"Dropping {numStillNull} unreferenceable specimens from CSUoccurrences.csv...")
-    csuData = csuData[~stillNull].reset_index(drop=True)
+    csuData = csuData[~stillNull].reset_index(drop = True)
     print("\n")
 else:
     print("No unreferenceable records found - all records have either coordinates or county name for georeferencing.")
@@ -141,20 +141,20 @@ print("\n")
 
 ##create geographicPrecision field and populate based on conditions
 conditions = [
-    (csuData['georeferenceVerificationStatus'] == True),
-    (csuData['georeferenceVerificationStatus'] == False),
-    (csuData['georeferenceVerificationStatus'].isna())
+    (csuData["georeferenceVerificationStatus"] == True),
+    (csuData["georeferenceVerificationStatus"] == False),
+    (csuData["georeferenceVerificationStatus"].isna())
 ]
 
 choices = ["PRECISE", "COUNTY CENTROID", "ASSIGNED CENTROID"]
-csuData['geographicPrecision'] = np.select(conditions,
+csuData["geographicPrecision"] = np.select(conditions,
                                            choices,
                                            default = "Unknown")
 
-preciseRecords = len(csuData[(csuData['geographicPrecision']) == "PRECISE"])
-countyCentroidRecords = len(csuData[(csuData['geographicPrecision']) == "COUNTY CENTROID"])
-assignedCentroidRecords = len(csuData[(csuData['geographicPrecision']) == "ASSIGNED CENTROID"])
-unknownRecords = len(csuData[(csuData['geographicPrecision']) == "Unknown"])
+preciseRecords = len(csuData[(csuData["geographicPrecision"]) == "PRECISE"])
+countyCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "COUNTY CENTROID"])
+assignedCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "ASSIGNED CENTROID"])
+unknownRecords = len(csuData[(csuData["geographicPrecision"]) == "Unknown"])
 totalRecords = len(csuData)
 
 ##print statements to sum number of records in each category of geographicPrecision
@@ -260,7 +260,7 @@ csuData["genusSpecies"] = (
 
 ##merge tracking list with csuData to add tracking status information
 csuData = csuData.merge(trackData[["Scientific Name", "State Rank", "Global Rank", "Federal Status"]], 
-                        left_on="genusSpecies", right_on="Scientific Name", how = "left")
+                        left_on = "genusSpecies", right_on = "Scientific Name", how = "left")
 csuData["onTrackingList"] = csuData["State Rank"].notna()
 
 matchRecords = csuData[csuData["genusSpecies"].isin(trackData["Scientific Name"])]
@@ -288,8 +288,8 @@ print("Redacting records of sensitive species and exporting cleaned dataset...")
 
 ##filter out entries that fall within the excludedSpecies and excludedFamilies lists
 finalFilteredData = csuData[
-    (~csuData['family'].isin(excludedFamilies)) &
-    (~csuData['scientificName'].isin(excludedSpecies))
+    (~csuData["family"].isin(excludedFamilies)) &
+    (~csuData["scientificName"].isin(excludedSpecies))
 ]
 
 ##variables for number of sensitive species records and for final cleaned file
@@ -298,8 +298,8 @@ cleanedFile = "./data/cleanedCSUoccurrences.csv"
 
 ##create separate dataframe of all excluded records and export to csv
 excludedSpecimens = csuData[
-    (csuData['family'].isin(excludedFamilies)) |
-    (csuData['scientificName'].isin(excludedSpecies))
+    (csuData["family"].isin(excludedFamilies)) |
+    (csuData["scientificName"].isin(excludedSpecies))
 ]
 excludedSpecimensFile = "./logs/excludedSensitiveSpecimens.csv"
 excludedSpecimens.to_csv(excludedSpecimensFile, index = False)
@@ -346,12 +346,12 @@ countyData = countyData.merge(trackCnts, left_on = "GEOID", right_on = "countyFI
 countyData["trackCnt"] = countyData["trackCnt"].fillna(0)
 
 ##create temp dataset that creates pivot columns of state ranking per county
-rankingPivot = finalFilteredData.groupby(['countyFIPS', 'State Rank']).size().unstack(fill_value=0)
-rankingPivot.columns = [f'rank{col}' for col in rankingPivot.columns]
+rankingPivot = finalFilteredData.groupby(["countyFIPS", "State Rank"]).size().unstack(fill_value = 0)
+rankingPivot.columns = [f"rank{col}" for col in rankingPivot.columns]
 rankingPivot = rankingPivot.reset_index()
 
 ##merge countyData with trackCnts
-countyData = countyData.merge(rankingPivot, left_on = "GEOID", right_on = "countyFIPS", how='left')
+countyData = countyData.merge(rankingPivot, left_on = "GEOID", right_on = "countyFIPS", how = "left")
 
 ##filter out which columns to permanently join to countyExport shp file
 rankCols = ["rankS1", "rankS2", "rankS3", "rankSH"]
