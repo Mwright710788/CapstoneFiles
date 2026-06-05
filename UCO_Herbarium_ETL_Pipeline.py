@@ -115,9 +115,9 @@ csuData.loc[stillNull, "georef_notes"] = "UNREFERENCEABLE - no coordinates, no c
 unreferencedSpecimensFile = "./logs/unreferenceableSpecimens.csv"
 print(f"Records flagged as unreferenceable: {numStillNull}")
 if numStillNull > 0:
-    print(f"NOTE: check county column in "{unreferencedSpecimensFile}" log file for null county name values...")
+    print(f"NOTE: check county column in '{unreferencedSpecimensFile}' log file for null county name values...")
     print("\n")
-    print(f"Exporting unreferenceable records for manual review to "{unreferencedSpecimensFile}"...")
+    print(f"Exporting unreferenceable records for manual review to '{unreferencedSpecimensFile}'...")
     csuData[stillNull].to_csv(unreferencedSpecimensFile, index = False)
     print(f"Dropping {numStillNull} unreferenceable specimens from CSUoccurrences.csv...")
     csuData = csuData[~stillNull].reset_index(drop = True)
