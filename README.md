@@ -93,10 +93,11 @@ UCO_Herbarium_ETL_Pipeline/
 Records with null coordinates but a valid county name are assigned the authoritative centroid of their listed county, calculated from `okCounties.geojson` using EPSG:5070 (NAD83 Conus Albers Equal Area) for geometric accuracy. Centroid values are stored in `calcLat` and `calcLon` fields; original coordinates are preserved in `decimalLatitude` and `decimalLongitude`. Any entries with no county name and null coordinates are removed from the dataset and exported to `./logs/unreferenceableSpecimens.csv`.
 
 ### Block 2 — Geographic Precision Field
-A `geographicPrecision` field is created with three values:
-- `PRECISE` — coordinates verified by georeferencer
-- `COUNTY CENTROID` — coordinates assigned but not verified; mostly county centroid coordinates
+A `geographicPrecision` field is created with four values:
+- `PRECISE` — coordinates verified by georeferencer; have 'TRUE' value in 'georeferencedVerificationStatus' field
+- `COUNTY CENTROID` — coordinates provided but have 'FALSE' value in 'georeferencedVerificationStatus' field; mostly county centroid coordinates
 - `ASSIGNED CENTROID` — coordinates not provided; county centroid assigned by pipeline
+- `PRECISION UNVERIFIED` — coordinates exist but 'georeferencedVerificationStatus' field was never populated
 
 ### Block 3 — Spatial Join and County Validation
 All records are spatially joined against Oklahoma county polygons. Records whose coordinates don't fall within their listed county are flagged and exported to `./logs/countyMismatches.csv` for manual review. Records falling outside Oklahoma entirely are removed from the dataset and exported to `./logs/entriesNotInOK.csv`. County information is permanently joined to the dataset, including `countyNameFromJoin` and `countyFIPS`; these values are used in downstream aggregation.

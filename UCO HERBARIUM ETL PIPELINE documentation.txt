@@ -77,10 +77,12 @@ CLEANED SPECIMEN DATASET
 
   geographicPrecision
     Describes the reliability of each record's coordinates:
-    - PRECISE           = coordinates were verified by a georeferencer
-    - COUNTY CENTROID   = coordinates were assigned but not verified
-    - ASSIGNED CENTROID = no coordinates were provided; the county center
-                         point was used as a placeholder
+    - PRECISE              = coordinates were verified by a georeferencer
+    - COUNTY CENTROID      = coordinates were assigned but not verified
+    - ASSIGNED CENTROID    = no coordinates were provided; the county center
+                                point was used as a placeholder
+    - PRECISION UNVERIFIED = coordinates exist but `georeferenceVerificationStatus` 
+                                field was never populated
 
   calcLat / calcLon
     The working coordinates used by the pipeline. For most records these
