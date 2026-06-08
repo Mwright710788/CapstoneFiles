@@ -333,7 +333,7 @@
             <mxRectangle height="20" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0CDfYrQeupsjT2v779wG-107" parent="0CDfYrQeupsjT2v779wG-105" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="County" vertex="1">
+        <mxCell id="0CDfYrQeupsjT2v779wG-107" parent="0CDfYrQeupsjT2v779wG-105" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="County / County FIPS" vertex="1">
           <mxGeometry height="20" width="150" x="30" as="geometry">
             <mxRectangle height="20" width="150" as="alternateBounds" />
           </mxGeometry>
@@ -602,7 +602,7 @@
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0CDfYrQeupsjT2v779wG-175" parent="0CDfYrQeupsjT2v779wG-173" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="Name" vertex="1">
+        <mxCell id="0CDfYrQeupsjT2v779wG-175" parent="0CDfYrQeupsjT2v779wG-173" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="GeoID" vertex="1">
           <mxGeometry height="30" width="150" x="30" as="geometry">
             <mxRectangle height="30" width="150" as="alternateBounds" />
           </mxGeometry>
@@ -654,7 +654,7 @@
             <mxRectangle height="20" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0CDfYrQeupsjT2v779wG-187" parent="0CDfYrQeupsjT2v779wG-185" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="Geoid" vertex="1">
+        <mxCell id="0CDfYrQeupsjT2v779wG-187" parent="0CDfYrQeupsjT2v779wG-185" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="NAME" vertex="1">
           <mxGeometry height="20" width="150" x="30" as="geometry">
             <mxRectangle height="20" width="150" as="alternateBounds" />
           </mxGeometry>
