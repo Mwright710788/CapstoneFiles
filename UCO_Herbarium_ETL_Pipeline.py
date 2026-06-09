@@ -139,24 +139,24 @@ else:
 
 ##block 2 initiation print statement
 print("Creating geographicPrecision field and populating based on three values:")
-print("    Precise, County Centroid, Assigned Centroid")
+print("    Precise, Assigned Centroid, Precision Unverified")
 print("\n")
 
 ##create geographicPrecision field and populate based on conditions
 conditions = [
     (csuData["georeferenceVerificationStatus"] == True),
-    (csuData["georeferenceVerificationStatus"] == False),
     (csuData["centroidAssigned"] == True),
-    ((csuData["centroidAssigned"] == False) & (csuData["georeferenceVerificationStatus"].isna()))
+    ((csuData["centroidAssigned"] == False) & 
+     (csuData["georeferenceVerificationStatus"].isna()) |
+     (csuData["georeferenceVerificationStatus"] == False))
 ]
 
-choices = ["PRECISE", "COUNTY CENTROID", "ASSIGNED CENTROID", "PRECISION UNVERIFIED"]
+choices = ["PRECISE", "ASSIGNED CENTROID", "PRECISION UNVERIFIED"]
 csuData["geographicPrecision"] = np.select(conditions,
                                            choices,
                                            default = "Unknown")
 
 preciseRecords = len(csuData[(csuData["geographicPrecision"]) == "PRECISE"])
-countyCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "COUNTY CENTROID"])
 assignedCentroidRecords = len(csuData[(csuData["geographicPrecision"]) == "ASSIGNED CENTROID"])
 precisionUnverifiedRecords = len(csuData[(csuData["geographicPrecision"]) == "PRECISION UNVERIFIED"])
 unknownRecords = len(csuData[(csuData["geographicPrecision"]) == "Unknown"])
@@ -166,18 +166,16 @@ totalRecords = len(csuData)
 print("""NOTE: 'ASSIGNED CENTROID' indicates records where county centroid was calculated
       and assigned due to no value given in the georeferenceVerificationStatus field and
       no geographic coordinates given; 'PRECISION UNVERIFIED' indicates records where geographic
-      coordinates were provided, but geographicVerificationStatus had null value;
+      coordinates were provided, but geographicVerificationStatus had null or 'FALSE' value;
       coordinate accuracy could not be verified for these records.""")
 print("\n")
 print(f"Total number of specimen records: {totalRecords}")
 print(f"Total number of geographically precise records: {preciseRecords}")
-print(f"Total number of records with county level precision: {countyCentroidRecords}")
 print(f"Total number of records with calculated county centroid: {assignedCentroidRecords}")
 print(f"Total number of records with unverified precision: {precisionUnverifiedRecords}")
 print("\n")
 print("Percentages of each category:")
 print(f"     Geographically precise records: {round(preciseRecords/totalRecords * 100,2)}%")
-print(f"     Records with county level precision: {round(countyCentroidRecords/totalRecords * 100,2)}%")
 print(f"     Records with calculated county centroid: {round(assignedCentroidRecords/totalRecords * 100,2)}%")
 print(f"     Records with unverified precision: {round(precisionUnverifiedRecords/totalRecords * 100,2)}%")
 print(f"     Records outside of these categories: {round(unknownRecords/totalRecords * 100,2)}%")
