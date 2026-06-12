@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0">
   <diagram name="Page-1" id="vp5ZB3LMx4H3iDpze45K">
-    <mxGraphModel dx="3039" dy="1843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3458" dy="2075" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -55,8 +55,11 @@
         <mxCell id="mv5gH8MdkmgmsuV4fE6p-9" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;variable =&amp;nbsp;&lt;/div&gt;&lt;i&gt;okCounties.geojson&lt;/i&gt;" vertex="1">
           <mxGeometry height="70" width="110" x="75" y="580" as="geometry" />
         </mxCell>
-        <mxCell id="f2iZ71QQHSd5SJTenB2_-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;PRECISE&#39;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="60" width="120" x="-100" y="425" as="geometry" />
+        <mxCell id="m50mnOzMLib7-0K7t4TB-28" edge="1" parent="1" source="f2iZ71QQHSd5SJTenB2_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="T4ZiRt8O989ueM4nzAIV-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2iZ71QQHSd5SJTenB2_-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &lt;i&gt;GeometricPrecisio&lt;/i&gt;n&lt;div&gt;field as &#39;PRECISE&#39;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="550" y="280" as="geometry" />
         </mxCell>
         <mxCell id="VkkUkMQ_HwLYZq9jCv0C-10" edge="1" parent="1" source="VkkUkMQ_HwLYZq9jCv0C-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;startSize=8;" target="VkkUkMQ_HwLYZq9jCv0C-3">
           <mxGeometry relative="1" as="geometry" />
@@ -105,16 +108,16 @@
           <mxGeometry height="60" width="120" x="310" y="505" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="compare all &#39;GeographicCoords&#39; values with County column" vertex="1">
-          <mxGeometry height="60" width="120" x="550" y="620" as="geometry" />
+          <mxGeometry height="60" width="120" x="1190" y="557.5" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-32" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="do &#39;GeographicCoords&#39;&amp;nbsp;&lt;div&gt;match with&lt;/div&gt;&lt;div&gt;County?&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="80" x="570" y="717.5" as="geometry" />
+          <mxGeometry height="80" width="80" x="1210" y="655" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-35" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="Log file of specimens&lt;div&gt;with mismatched&lt;/div&gt;&lt;div&gt;geographc information.&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="120" x="550" y="950" as="geometry" />
+          <mxGeometry height="80" width="120" x="1190" y="887.5" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-36" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="print message informing user of # of mimatched entries." vertex="1">
-          <mxGeometry height="60" width="120" x="550" y="850" as="geometry" />
+          <mxGeometry height="60" width="120" x="1190" y="787.5" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-37" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="create&lt;div&gt;&#39;genusSpecies&#39;&lt;/div&gt;&lt;div&gt;field&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="790" y="160" as="geometry" />
@@ -149,14 +152,11 @@
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-44" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="mark &#39;GeometricPrecision&#39;&lt;div&gt;field as &#39;ASSIGNED CENTROID&#39;&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="-100" y="650" as="geometry" />
         </mxCell>
-        <mxCell id="9fPjuyDh25-OeGfxm3OJ-59" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="any &#39;GeographicCoords&#39;&amp;nbsp;&lt;div&gt;values &#39;Null&#39;?&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="80" x="570" y="370" as="geometry" />
-        </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-65" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
           <mxGeometry height="30" width="60" x="-150" y="330" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-154" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="Log file of specimens&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;that still have &#39;Null&#39; value in&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&#39;GeographicCoods&#39;.&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="120" x="550" y="505" as="geometry" />
+          <mxGeometry height="80" width="120" x="1190" y="442.5" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-165" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="Data Preprocessing Python Script" vertex="1">
           <mxGeometry height="40" width="410" x="290" y="90" as="geometry" />
@@ -762,8 +762,11 @@
         <mxCell id="T4ZiRt8O989ueM4nzAIV-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="create&lt;div&gt;&lt;i&gt;calcLat&lt;/i&gt;&amp;nbsp;and &lt;i&gt;calcLon&lt;/i&gt;&lt;/div&gt;&lt;div&gt;fields&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="70" y="900" as="geometry" />
         </mxCell>
-        <mxCell id="jFNPreqF9Q0fl9qRJwUc-145" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="records w/&lt;div&gt;&#39;True&#39;&lt;/div&gt;&lt;div&gt;georeference&lt;/div&gt;&lt;div&gt;value?&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="80" x="455" y="465" as="geometry" />
+        <mxCell id="m50mnOzMLib7-0K7t4TB-27" edge="1" parent="1" source="jFNPreqF9Q0fl9qRJwUc-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="f2iZ71QQHSd5SJTenB2_-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jFNPreqF9Q0fl9qRJwUc-145" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="records w/&lt;div&gt;&#39;True&#39;&lt;/div&gt;&lt;div&gt;&lt;i&gt;GVS**&lt;/i&gt;&lt;/div&gt;&lt;div&gt;value?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="570" y="160" as="geometry" />
         </mxCell>
         <mxCell id="m50mnOzMLib7-0K7t4TB-12" edge="1" parent="1" source="f2iZ71QQHSd5SJTenB2_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="T4ZiRt8O989ueM4nzAIV-28">
           <mxGeometry relative="1" as="geometry" />
@@ -786,7 +789,7 @@
           <mxGeometry height="60" width="120" x="310" y="170" as="geometry" />
         </mxCell>
         <mxCell id="T4ZiRt8O989ueM4nzAIV-15" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="records w/&lt;div&gt;&#39;False&#39;&lt;/div&gt;&lt;div&gt;georeference&lt;/div&gt;&lt;div&gt;value?&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="80" x="455" y="360" as="geometry" />
+          <mxGeometry height="80" width="80" x="570" y="380" as="geometry" />
         </mxCell>
         <mxCell id="m50mnOzMLib7-0K7t4TB-7" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -825,6 +828,9 @@
         <mxCell id="m50mnOzMLib7-0K7t4TB-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Yes" vertex="1">
           <mxGeometry height="30" width="60" x="360" y="350" as="geometry" />
         </mxCell>
+        <mxCell id="m50mnOzMLib7-0K7t4TB-26" edge="1" parent="1" source="m50mnOzMLib7-0K7t4TB-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endSize=8;" target="jFNPreqF9Q0fl9qRJwUc-145">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="m50mnOzMLib7-0K7t4TB-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="create&lt;div&gt;&lt;i&gt;geographicPrecision&lt;/i&gt;&lt;/div&gt;&lt;div&gt;field&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="310" y="970" as="geometry" />
         </mxCell>
@@ -836,6 +842,9 @@
         </mxCell>
         <mxCell id="m50mnOzMLib7-0K7t4TB-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
           <mxGeometry height="30" width="60" x="240" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="m50mnOzMLib7-0K7t4TB-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="** NOTE:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;GVS&amp;nbsp;&lt;/i&gt;&amp;nbsp;= &lt;i&gt;georeferenceVerificatioStatus, &lt;/i&gt;a field within &lt;i&gt;CSUoccurrences.csv&lt;/i&gt;&amp;nbsp;verifying&lt;i&gt;&amp;nbsp;&lt;/i&gt;records that&amp;nbsp;&lt;/div&gt;&lt;div&gt;have been verified as geographically accurate.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="510" x="-540" y="900" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
