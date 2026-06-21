@@ -67,7 +67,7 @@ UNDERSTANDING THE OUTPUT
 --------------------------------------------------------------------------------
 
 CLEANED SPECIMEN DATASET
-  Location: data/cleanedCSUoccurrences.csv
+  Location: cleanFiles/cleanedCSUoccurrences.csv
 
   This is the primary specimen output. It contains all validated Oklahoma
   specimens with sensitive species removed. This file is ready for import
@@ -106,7 +106,7 @@ CLEANED SPECIMEN DATASET
 
 
 COUNTY SUMMARY SHAPEFILE
-  Location: data/countySHP/countyDataOutput.shp
+  Location: cleanFiles/countySHP/countyDataOutput.shp
 
   This shapefile summarizes specimen data at the county level and is the
   data source for the choropleth map in the UCO Herbarium StoryMap and
@@ -142,11 +142,39 @@ COUNTY SUMMARY SHAPEFILE
     Number of SH-ranked specimens in that county.
     SH = Possibly extirpated from Oklahoma.
 
+  areaSqMi
+    The area of the county in square miles, calculated from the county
+    boundary geometry using an equal-area projection (EPSG:5070).
+
+  densSqMi
+    Specimen density — the number of specimens per square mile for that
+    county. Used to identify underrepresented and overrepresented counties
+    relative to their geographic size.
+
+  trkDnsSqMi
+    Tracking list density — the number of tracked species specimens per
+    square mile for that county.
+
   Note: Counties with no specimens will show 0 in all count fields.
   Sensitive species records are excluded from all counts.
 
   This file is regenerated automatically every time the pipeline runs.
   No manual steps are required to update the county map data.
+
+
+FAMILY COUNT FILES
+  Location: cleanFiles/
+
+  familyCntPerCounty.csv
+    A long-format table with one row per county and family combination.
+    Contains countyFIPS, family name, and specimen count. Used by the
+    ArcGIS Dashboard to display family breakdowns when a county is selected.
+
+  familyPercentage.csv
+    A statewide summary table with one row per plant family. Contains the
+    total specimen count and percentage of the overall collection each
+    family represents. Used to identify overrepresented and underrepresented
+    families within the UCO collection.
 
 
 LOG FILES
@@ -228,10 +256,14 @@ UCO_Herbarium_ETL_Pipeline/
 │   ├── CSUoccurrences.csv              <- Replace this file each run
 │   ├── okCounties.geojson              <- Do not modify
 │   ├── okStateTracking.csv             <- Do not modify
+│
+├── cleanFiles
 │   ├── cleanedCSUoccurrences.csv       <- Pipeline output (created each run)
 │   └── countySHP/
 │       └── countyDataOutput.shp        <- County summary output (created each run)
-│
+│   ├── familyCntPerCounty.csv          <- Pipeline output (created each run)
+│   └── familyPercentage.csv            <- Pipeline output (created each run)
+|
 ├── logs/
 │   ├── countyMismatches.csv            <- Records flagged for review
 │   ├── entriesNotInOK.csv              <- Records removed (outside Oklahoma)

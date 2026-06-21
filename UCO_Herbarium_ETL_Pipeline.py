@@ -34,6 +34,9 @@ trackData = pd.read_csv(trackFile)
 ##create logs directory if it doesn't exist
 os.makedirs("./logs/", exist_ok = True)
 
+##create cleanFiles directory if it doesn't exist
+os.makedirs("./cleanFiles/", exist_ok = True)
+
 
 ###################################################################################################
 ####
@@ -302,7 +305,7 @@ finalFilteredData = csuData[
 
 ##variables for number of sensitive species records and for final cleaned file
 removedCount = len(csuData) - len(finalFilteredData)
-cleanedFile = "./data/cleanedCSUoccurrences.csv"
+cleanedFile = "./cleanFiles/cleanedCSUoccurrences.csv"
 
 ##create separate dataframe of all excluded records and export to csv
 excludedSpecimens = csuData[
@@ -365,17 +368,62 @@ countyData = countyData.merge(rankingPivot, left_on = "GEOID", right_on = "count
 rankCols = ["rankS1", "rankS2", "rankS3", "rankSH"]
 countyData[rankCols] = countyData[rankCols].fillna(0)
 
+##project into EPSG: 5070 to calculate accurate county area in square miles
+countyData["areaSqMi"] = countyData.geometry.to_crs(epsg = 5070).area / 2.59e6  # Convert to square miles
+
+##calculate density of specimens per square mile and add as new column
+countyData["densSqMi"] = countyData["specCnt"] / countyData["areaSqMi"]
+
+##calculate density of tracked species per square mile and add as new column
+countyData["trkDnsSqMi"] = countyData["trackCnt"] / countyData["areaSqMi"]
+
 ##create countySHP folder as needed and export finalized county shp files
-os.makedirs("./data/countySHP", exist_ok = True)
-keepFields = ["GEOID", "NAME", "specCnt", "trackCnt", "rankS1", "rankS2", "rankS3", "rankSH", "geometry"]
+os.makedirs("./cleanFiles/countySHP", exist_ok = True)
+keepFields = ["GEOID", "NAME", "specCnt", "trackCnt", "rankS1", "rankS2", "rankS3", "rankSH", "areaSqMi", "densSqMi", "trkDnsSqMi", "geometry"]
 countyExport = countyData[keepFields]
-countyExportSHP = "./data/countySHP/countyDataOutput.shp"
+countyExportSHP = "./cleanFiles/countySHP/countyDataOutput.shp"
 
 ##print statements informing user of file export
 print(f"Exporting aggregated county information in shapefile format to: {countyExportSHP}")
 print("\n")
 countyExport.to_file(countyExportSHP)
 
+###################################################################################################
+####
+####Block #7: This block creates two additional CSV log files:
+####              1: a count of number of plant families within each county in long format, and
+####              2: a percentage  each plant family equates to within the total number of 
+####                    plant specimens
+####
+###################################################################################################
+
+print("Creating csv file of number of plant family instances within each county")
+print("\n")
+
+##set variable of log file location
+exportFamilyPivot = "./cleanFiles/familyCntPerCounty.csv"
+exportFamilyPercent = "./cleanFiles/familyPercentage.csv"
+
+##create temp dataset that filters data out by county and then create family count
+familyPivot = finalFilteredData.groupby(["countyFIPS", "family"]).size().reset_index()
+familyPivot.columns = ["countyFIPS", "family", "specCount"]
+
+##export to csv log file
+familyPivot.to_csv(exportFamilyPivot, index = False)
+print(f"CSV log file created and saved to: {exportFamilyPivot}!")
+print("\n")
+
+print("Creating csv file of plant families and their respective percentage within dataset")
+print("\n")
+
+familyPercentage = finalFilteredData["family"].value_counts().reset_index()
+familyPercentage.columns = ["family", "count"]
+familyPercentage["percentage"] = familyPercentage["count"] / len(finalFilteredData)
+
+##export to csv log file
+familyPercentage.to_csv(exportFamilyPercent, index = False)
+print(f"CSV log file created and saved to: {exportFamilyPercent}!")
+print("\n")
 
 print("ETL pipeline complete!")
 
