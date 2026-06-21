@@ -9,9 +9,13 @@ data/countySHP/*
 *.shx
 *.prj
 *.gdb
+*.cpg
 
 # Logs
 logs/*.csv
+
+#cleanFiles
+cleanFiles/*.csv
 
 # Python
 __pycache__/
@@ -22,3 +26,4 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
