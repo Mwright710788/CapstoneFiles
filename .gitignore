@@ -14,8 +14,8 @@ data/countySHP/*
 # Logs
 logs/*.csv
 
-#cleanFiles
-cleanFiles/*.csv
+#outputFiles
+outputFiles/*.csv
 
 # Python
 __pycache__/

@@ -34,8 +34,8 @@ trackData = pd.read_csv(trackFile)
 ##create logs directory if it doesn't exist
 os.makedirs("./logs/", exist_ok = True)
 
-##create cleanFiles directory if it doesn't exist
-os.makedirs("./cleanFiles/", exist_ok = True)
+##create outputFiles directory if it doesn't exist
+os.makedirs("./outputFiles/", exist_ok = True)
 
 
 ###################################################################################################
@@ -305,7 +305,7 @@ finalFilteredData = csuData[
 
 ##variables for number of sensitive species records and for final cleaned file
 removedCount = len(csuData) - len(finalFilteredData)
-cleanedFile = "./cleanFiles/cleanedCSUoccurrences.csv"
+cleanedFile = "./outputFiles/cleanedCSUoccurrences.csv"
 
 ##create separate dataframe of all excluded records and export to csv
 excludedSpecimens = csuData[
@@ -378,10 +378,10 @@ countyData["densSqMi"] = countyData["specCnt"] / countyData["areaSqMi"]
 countyData["trkDnsSqMi"] = countyData["trackCnt"] / countyData["areaSqMi"]
 
 ##create countySHP folder as needed and export finalized county shp files
-os.makedirs("./cleanFiles/countySHP", exist_ok = True)
+os.makedirs("./outputFiles/countySHP", exist_ok = True)
 keepFields = ["GEOID", "NAME", "specCnt", "trackCnt", "rankS1", "rankS2", "rankS3", "rankSH", "areaSqMi", "densSqMi", "trkDnsSqMi", "geometry"]
 countyExport = countyData[keepFields]
-countyExportSHP = "./cleanFiles/countySHP/countyDataOutput.shp"
+countyExportSHP = "./outputFiles/countySHP/countyDataOutput.shp"
 
 ##print statements informing user of file export
 print(f"Exporting aggregated county information in shapefile format to: {countyExportSHP}")
@@ -401,8 +401,8 @@ print("Creating csv file of number of plant family instances within each county"
 print("\n")
 
 ##set variable of log file location
-exportFamilyPivot = "./cleanFiles/familyCntPerCounty.csv"
-exportFamilyPercent = "./cleanFiles/familyPercentage.csv"
+exportFamilyPivot = "./outputFiles/familyCntPerCounty.csv"
+exportFamilyPercent = "./outputFiles/familyPercentage.csv"
 
 ##create temp dataset that filters data out by county and then create family count
 familyPivot = finalFilteredData.groupby(["countyFIPS", "family"]).size().reset_index()

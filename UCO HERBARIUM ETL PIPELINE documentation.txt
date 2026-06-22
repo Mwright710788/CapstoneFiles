@@ -67,7 +67,7 @@ UNDERSTANDING THE OUTPUT
 --------------------------------------------------------------------------------
 
 CLEANED SPECIMEN DATASET
-  Location: cleanFiles/cleanedCSUoccurrences.csv
+  Location: outputFiles/cleanedCSUoccurrences.csv
 
   This is the primary specimen output. It contains all validated Oklahoma
   specimens with sensitive species removed. This file is ready for import
@@ -106,7 +106,7 @@ CLEANED SPECIMEN DATASET
 
 
 COUNTY SUMMARY SHAPEFILE
-  Location: cleanFiles/countySHP/countyDataOutput.shp
+  Location: outputFiles/countySHP/countyDataOutput.shp
 
   This shapefile summarizes specimen data at the county level and is the
   data source for the choropleth map in the UCO Herbarium StoryMap and
@@ -163,7 +163,7 @@ COUNTY SUMMARY SHAPEFILE
 
 
 FAMILY COUNT FILES
-  Location: cleanFiles/
+  Location: outputFiles/
 
   familyCntPerCounty.csv
     A long-format table with one row per county and family combination.
@@ -257,7 +257,7 @@ UCO_Herbarium_ETL_Pipeline/
 │   ├── okCounties.geojson              <- Do not modify
 │   ├── okStateTracking.csv             <- Do not modify
 │
-├── cleanFiles
+├── outputFiles
 │   ├── cleanedCSUoccurrences.csv       <- Pipeline output (created each run)
 │   └── countySHP/
 │       └── countyDataOutput.shp        <- County summary output (created each run)
