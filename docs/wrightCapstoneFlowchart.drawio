@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0">
   <diagram name="Page-1" id="vp5ZB3LMx4H3iDpze45K">
-    <mxGraphModel dx="2571" dy="1413" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1664" dy="914" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -58,8 +58,8 @@
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-16" edge="1" parent="1" source="VkkUkMQ_HwLYZq9jCv0C-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="XZQQMSrQk7Z_WG5QlYIc-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="VkkUkMQ_HwLYZq9jCv0C-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate total # of specimen count per county" vertex="1">
-          <mxGeometry height="60" width="120" x="1050" y="390" as="geometry" />
+        <mxCell id="VkkUkMQ_HwLYZq9jCv0C-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate specimen counts" vertex="1">
+          <mxGeometry height="40" width="120" x="1050" y="390" as="geometry" />
         </mxCell>
         <mxCell id="9fPjuyDh25-OeGfxm3OJ-14" edge="1" parent="1" source="T4ZiRt8O989ueM4nzAIV-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startSize=8;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
           <mxGeometry relative="1" as="geometry">
@@ -155,9 +155,8 @@
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="VkkUkMQ_HwLYZq9jCv0C-11">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="950" y="1040" />
               <mxPoint x="1030" y="1040" />
-              <mxPoint x="1030" y="420" />
+              <mxPoint x="1030" y="410" />
             </Array>
             <mxPoint x="950" y="1040" as="sourcePoint" />
           </mxGeometry>
@@ -583,31 +582,31 @@
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-17" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="XZQQMSrQk7Z_WG5QlYIc-14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate total # of tracking list joins per county" vertex="1">
-          <mxGeometry height="60" width="120" x="1050" y="490" as="geometry" />
+        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate tracking list join counts" vertex="1">
+          <mxGeometry height="40" width="120" x="1050" y="460" as="geometry" />
         </mxCell>
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-18" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="XZQQMSrQk7Z_WG5QlYIc-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate total # of specimen count per county" vertex="1">
-          <mxGeometry height="60" width="120" x="1050" y="590" as="geometry" />
+        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate state rankins [SH-S1]" vertex="1">
+          <mxGeometry height="40" width="120" x="1050" y="530" as="geometry" />
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-23" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="XZQQMSrQk7Z_WG5QlYIc-19">
+        <mxCell id="0xtdLDy3yYmG5PVuGh8g-3" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endSize=8;" target="0xtdLDy3yYmG5PVuGh8g-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Aggregate total # of state rankings per county [SH - S1]" vertex="1">
-          <mxGeometry height="60" width="120" x="1050" y="690" as="geometry" />
+        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="print statement informing user of exported &lt;i&gt;okCounties &lt;/i&gt;in SHP file format" vertex="1">
+          <mxGeometry height="60" width="120" x="1050" y="600" as="geometry" />
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-24" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="XZQQMSrQk7Z_WG5QlYIc-20">
+        <mxCell id="0xtdLDy3yYmG5PVuGh8g-5" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="0xtdLDy3yYmG5PVuGh8g-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="print statement informing user of exported &lt;i&gt;okCounties &lt;/i&gt;in SHP file format" vertex="1">
-          <mxGeometry height="60" width="120" x="1050" y="787.5" as="geometry" />
+          <mxGeometry height="60" width="120" x="1050" y="820" as="geometry" />
         </mxCell>
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-25" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-166">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1220" y="930" />
+              <mxPoint x="1220" y="1020" />
               <mxPoint x="1220" y="200" />
             </Array>
           </mxGeometry>
@@ -615,13 +614,22 @@
         <mxCell id="XZQQMSrQk7Z_WG5QlYIc-26" edge="1" parent="1" source="XZQQMSrQk7Z_WG5QlYIc-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endSize=8;" target="9fPjuyDh25-OeGfxm3OJ-169">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1220" y="930" />
+              <mxPoint x="1220" y="1020" />
               <mxPoint x="1220" y="330" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-20" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;&lt;i&gt;countyExportSHP&lt;/i&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="80" width="120" x="1050" y="890" as="geometry" />
+        <mxCell id="XZQQMSrQk7Z_WG5QlYIc-20" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;&lt;i&gt;familyPercentage.csv&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="1050" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="0xtdLDy3yYmG5PVuGh8g-1" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;&lt;i&gt;familyCntPerCounty.csv&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="1050" y="925" as="geometry" />
+        </mxCell>
+        <mxCell id="0xtdLDy3yYmG5PVuGh8g-4" edge="1" parent="1" source="0xtdLDy3yYmG5PVuGh8g-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endSize=8;" target="XZQQMSrQk7Z_WG5QlYIc-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0xtdLDy3yYmG5PVuGh8g-2" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="&lt;div&gt;&lt;i&gt;countyDataOutput.shp&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="1050" y="700" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
