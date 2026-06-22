@@ -208,6 +208,12 @@ LOG FILES
     Echinocactus texensis (Horse Crippler Cactus). Retained here for
     internal herbarium use only.
 
+  noFamilyValue.csv
+    Records with null plant family taxonomic value; these records could not
+    be represented in the familyCntPerCounty.csv. These records are exported
+    for manual review, but will remain within the dataset to retain data 
+    integrity.
+
 
 ================================================================================
 
@@ -270,6 +276,7 @@ UCO_Herbarium_ETL_Pipeline/
 │   ├── trackingListMatches.csv         <- Tracking list matches
 │   ├── excludedSensitiveSpecimens.csv  <- Redacted records
 │   └── unreferenceableSpecimens.csv    <- Records with no location data (conditional)
+|   └── noFamilyValue.csv               <- Records with null plant family values
 │
 └── UCO_Herbarium_ETL_Pipeline.py       <- The pipeline script
 

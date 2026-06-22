@@ -49,7 +49,7 @@ UCO_Herbarium_ETL_Pipeline/
 │   ├── okCounties.geojson              <- Do not modify
 │   ├── okStateTracking.csv             <- Do not modify
 │
-├── cleanFiles
+├── outputFiles
 │   ├── cleanedCSUoccurrences.csv       <- Pipeline output (created each run)
 │   └── countySHP/
 │       └── countyDataOutput.shp        <- County summary output (created each run)
@@ -62,6 +62,7 @@ UCO_Herbarium_ETL_Pipeline/
 │   ├── trackingListMatches.csv         <- Tracking list matches
 │   ├── excludedSensitiveSpecimens.csv  <- Redacted records
 │   └── unreferenceableSpecimens.csv    <- Records with no location data (conditional)
+|   └── noFamilyValue.csv               <- Records with null plant family values
 │
 └── UCO_Herbarium_ETL_Pipeline.py       <- The pipeline script
 └── README.md
@@ -86,10 +87,10 @@ UCO_Herbarium_ETL_Pipeline/
 3. Open ArcGIS Pro and launch the arcgispro-py3 Python environment
 4. Run `UCO_Herbarium_ETL_Pipeline.py`
 5. Review log files in `./logs/` for any data quality issues
-6. The cleaned specimen dataset will be written to `./cleanFiles/cleanedCSUoccurrences.csv`
-7. The county summary shapefile will be written to `./cleanFiles/countySHP/countyDataOutput.shp`
-8. The aggregated family counts per county csv will be written to `./cleanFiles/familyCntPerCounty.csv`
-9. The family percentage within dataset csv will be written to `./cleanFiles/familyPercentage.csv`
+6. The cleaned specimen dataset will be written to `./outputFiles/cleanedCSUoccurrences.csv`
+7. The county summary shapefile will be written to `./outputFiles/countySHP/countyDataOutput.shp`
+8. The aggregated family counts per county csv will be written to `./outputFiles/familyCntPerCounty.csv`
+9. The family percentage within dataset csv will be written to `./outputFiles/familyPercentage.csv`
 
 ---
 
@@ -151,13 +152,11 @@ Counties with zero specimens receive `0` in all count fields. The `./data/county
 ### Block 7 — Family Count per County and Family Percentage CSV Files
 
 Block 7 produces two CSV files summarizing specimen data by plant family.
-The first, `familyCntPerCounty.csv`, is a long-format table containing one
-row per county and family combination with a specimen count column. This file
-drives the family breakdown chart in the ArcGIS Dashboard when a county is
-selected. The second, `familyPercentage.csv`, is a statewide summary
-containing one row per family with a total count and percentage of the overall
-collection. This file supports analysis of which families are overrepresented
-or underrepresented within the UCO Herbarium collection.
+The first, `familyCntPerCounty.csv`, is a long-format table containing one row per county and family combination with a specimen count column. This file drives the family breakdown chart in the ArcGIS Dashboard when a county is selected. 
+
+If any records are found with a null family value, they are exported to `./logs/noFamilyValue.csv` for manual review and will not be represented in the `familyCntPerCounty.csv`.
+
+The second, `familyPercentage.csv`, is a statewide summary containing one row per family with a total count and percentage of the overall collection. This file supports analysis of which families are overrepresented or underrepresented within the UCO Herbarium collection.
 
 ---
 
@@ -165,15 +164,16 @@ or underrepresented within the UCO Herbarium collection.
 
 | File | Description |
 |------|-------------|
-| `./cleanFiles/cleanedCSUoccurrences.csv` | Final cleaned specimen dataset for geospatial analysis and AGOL publication |
-| `./cleanFiles/countySHP/countyDataOutput.shp` | County summary shapefile with aggregated specimen and ranking counts |
-| `./cleanFiles/familyCntPerCounty.csv` | CSV long format table of # of plant family instances per county
-| `./cleanFiles/familyPercentage.csv` | CSV table of each plant family within the collection and their respective percentage of all specimens within dataset
+| `./outputFiles/cleanedCSUoccurrences.csv` | Final cleaned specimen dataset for geospatial analysis and AGOL publication |
+| `./outputFiles/countySHP/countyDataOutput.shp` | County summary shapefile with aggregated specimen and ranking counts |
+| `./outputFiles/familyCntPerCounty.csv` | CSV long format table of # of plant family instances per county
+| `./outputFiles/familyPercentage.csv` | CSV table of each plant family within the collection and their respective percentage of all specimens within dataset
 | `./logs/countyMismatches.csv` | Records flagged for manual coordinate review |
 | `./logs/entriesNotInOK.csv` | Records removed — coordinates outside Oklahoma |
 | `./logs/trackingListMatches.csv` | Records matched to Oklahoma State Tracking List |
 | `./logs/excludedSensitiveSpecimens.csv` | Records redacted from public-facing deliverables |
 | `./logs/unreferenceableSpecimens.csv` | Records removed — no coordinates and no county name (conditional) |
+| `./logs/noFamilyValue.csv` | Records flagged for manual review - null plant family values |
 
 ---
 

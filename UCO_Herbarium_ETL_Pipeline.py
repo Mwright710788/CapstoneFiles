@@ -398,11 +398,17 @@ countyExport.to_file(countyExportSHP)
 ###################################################################################################
 
 print("Creating csv file of number of plant family instances within each county")
-print("\n")
 
 ##set variable of log file location
 exportFamilyPivot = "./outputFiles/familyCntPerCounty.csv"
 exportFamilyPercent = "./outputFiles/familyPercentage.csv"
+
+##set up filter to export entries with no family value
+noFamilyRecords = finalFilteredData[finalFilteredData["family"].isnull()]
+noFamilyExport = "./logs/noFamilyValue.csv"
+print(f"{len(noFamilyRecords)} records with null family values are excluded from {exportFamilyPivot}")
+print(f"Exporting these entries to '{noFamilyExport}' for manual review.")
+noFamilyRecords.to_csv(noFamilyExport, index = False)
 
 ##create temp dataset that filters data out by county and then create family count
 familyPivot = finalFilteredData.groupby(["countyFIPS", "family"]).size().reset_index()
@@ -414,11 +420,10 @@ print(f"CSV log file created and saved to: {exportFamilyPivot}!")
 print("\n")
 
 print("Creating csv file of plant families and their respective percentage within dataset")
-print("\n")
 
 familyPercentage = finalFilteredData["family"].value_counts().reset_index()
 familyPercentage.columns = ["family", "count"]
-familyPercentage["percentage"] = familyPercentage["count"] / len(finalFilteredData)
+familyPercentage["percentage"] = round((familyPercentage["count"] / len(finalFilteredData) * 100), 2)
 
 ##export to csv log file
 familyPercentage.to_csv(exportFamilyPercent, index = False)
